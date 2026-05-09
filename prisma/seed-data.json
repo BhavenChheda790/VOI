@@ -1,0 +1,304 @@
+{
+  "exportedAt": "2026-05-09T21:06:23.329Z",
+  "siteConfig": {
+    "id": 1,
+    "orgName": "Voice of India USA (VOI)",
+    "tagline": "Empowering start-ups. Guiding students. Uplifting women.",
+    "logoUrl": "/uploads/1776655299306-2ea1622d-voi_logo_hq_transparent.png",
+    "whatsappCountryCode": "1",
+    "whatsappLocalNumber": "5555555555",
+    "zelleEmail": "voiceofindiausa@gmail.com",
+    "contactEmail": "voiceofindiausa@gmail.com",
+    "instagramUrl": "https://instagram.com",
+    "facebookUrl": "https://facebook.com",
+    "bankName": "Sample Bank",
+    "bankAccountName": "Voice of India USA",
+    "bankAccountNumber": "XXXX-XXXX-XXXX",
+    "bankRoutingNumber": "XXXXXXXXX",
+    "paymentInstructions": "All donations go directly to women-empowerment programs, Garba/cultural events, and student mentorship.",
+    "botGreeting": null,
+    "botProofAck": null,
+    "botConfirmed": null,
+    "botRejected": null,
+    "homeHeroTitle": "Welcome to Voice of India USA (VOI)",
+    "homeHeroSubtitle": "California-based not-for-profit nurturing entrepreneurial dreams, advancing women in business, and mentoring students.",
+    "homeQuote": "Let your voice be heard. Together, we can create a more inclusive and prosperous tomorrow.",
+    "footerTagline": "Together, let's amplify voices, unlock potential, and build a brighter, inclusive future.",
+    "updatedAt": "2026-05-05T04:40:37.284Z"
+  },
+  "pages": [
+    {
+      "id": 13,
+      "slug": "about",
+      "title": "About Us",
+      "content": "California is a land of opportunities, and **Voice of India (VOI)** stands as a beacon for those striving to turn dreams into reality.\n\nFounded with the vision to empower individuals and communities, VOI focuses on:\n\n- Supporting start-ups\n- Empowering women entrepreneurs  \n- Guiding students in building their futures\n\nWe combine strategic initiatives, community support, and inclusive outreach to shape a more empowered future for all.",
+      "updatedAt": "2026-04-16T20:11:05.410Z"
+    },
+    {
+      "id": 14,
+      "slug": "what-we-do",
+      "title": "What We Do",
+      "content": "We design inclusive, impact-driven programs that support entrepreneurs, empower women, and guide students toward success.\n\n### For start-ups\n- Business planning and development support\n- Investor connections and pitch opportunities\n- Workshops and networking events\n\n### For women entrepreneurs\n- Mentorship from successful leaders\n- Skill-building and leadership workshops\n- Women-focused networking and funding opportunities\n\n### For students\n- Career guidance and mentorship\n- Internship and job placement support\n- Soft skills training and industry exposure",
+      "updatedAt": "2026-04-16T20:11:05.411Z"
+    },
+    {
+      "id": 15,
+      "slug": "social-work",
+      "title": "Social Work",
+      "content": "VOI channels community energy into **measurable social impact**: mentorship circles, student outreach, and partnerships that expand access to opportunity.\n\nWe collaborate with volunteers and sponsors to run programs that reach people where they are—on campus, in early-stage ventures, and in women-led businesses seeking a stronger network.",
+      "updatedAt": "2026-04-16T20:11:05.411Z"
+    },
+    {
+      "id": 16,
+      "slug": "community",
+      "title": "Community & Events",
+      "content": "Our socio-cultural events are more than celebrations—they **fund initiatives** and build a connected community.\n\n**Signature formats**\n- Career counseling summits\n- Women in business conferences\n- Cultural fundraising festivals\n- Entrepreneur networking nights\n\nFollow our **Upcoming events** page for dates and registration details.",
+      "updatedAt": "2026-04-16T20:11:05.412Z"
+    },
+    {
+      "id": 17,
+      "slug": "donate",
+      "title": "Donate",
+      "content": "**Support the movement. Make a difference.**\n\nYour generosity expands programs, reaches more aspiring entrepreneurs, and strengthens communities.\n\n**How it works**\n1. Tap **Donate on WhatsApp** on this site.\n2. Our automated assistant shares **Zelle** and other approved instructions.\n3. After you pay, send a **screenshot or reference** in the same chat so our team can match your gift.\n\nWe never store card details on this website—donations are coordinated securely through WhatsApp with human verification of proofs.",
+      "updatedAt": "2026-04-16T20:11:05.412Z"
+    },
+    {
+      "id": 18,
+      "slug": "contact",
+      "title": "Contact Us",
+      "content": "Have a question or want to connect?\n\n**Email:** voiceofindiausa@gmail.com  \n\n**Social:** find us on Instagram and Facebook (links in the footer).\n\nFor **corporate or large contributions**, please email us with the subject line *Corporate partnership*.",
+      "updatedAt": "2026-04-16T20:11:05.412Z"
+    }
+  ],
+  "events": [
+    {
+      "id": 9,
+      "title": "VAAT: A Musical Conversation with Hardik Chauhan",
+      "slug": "vaat-musical-conversation-hardik-chauhan-2026",
+      "summary": "Mother’s Day — soulful live music with Hardik Chauhan. Tea & snacks, Gayatri Temple Hall, Anaheim.",
+      "body": "Celebrating **Mother's Day** — presented by **Voice of India USA**.\r\n\r\n### Schedule\r\n- **Tea & snacks:** 3:00 PM  \r\n- **Show:** 3:30 PM  \r\n\r\n### Tickets\r\n- **VVIP:** $30 · **General:** $25 (includes tea & snacks)\r\n\r\n**Buy tickets:** [Eventbrite](https://www.eventbrite.com/e/vaat-a-musical-conversation-with-hardik-chauhan-tickets-1987955568620)\r\n\r\n**Pay via Zelle:** 909-696-0066\r\n\r\n### Contacts\r\n- **Sponsorship:** Dolly Oza — 949-280-3936  \r\n- **Tickets:** Adhir Shah — 714-213-3288 · Mihir Gandhi — 714-809-3525 · Kishan Dholiya — +1 (469) 810-8523  \r\n\r\n### Partners\r\nNational promoters: The Comedy Factory, Shankus Events · Tea & snacks by **Everest Cuisine of India**.\r\n\r\n---\r\n\r\n*Soulful tunes and stories with Hardik Chauhan — a chill musical hangout, live!*",
+      "startAt": "2026-05-10T22:00:00.000Z",
+      "endAt": "2026-05-11T00:00:00.000Z",
+      "location": "Gayatri Temple Hall, 2446 W Orange Avenue, Anaheim, CA",
+      "imageUrl": "/uploads/1777941541892-bbbee84d-atsapp-image-2026-04-24-at-21.02.22.jpeg",
+      "ticketUrl": "https://www.eventbrite.com/e/vaat-a-musical-conversation-with-hardik-chauhan-tickets-1987955568620",
+      "kind": "UPCOMING",
+      "published": true,
+      "sortOrder": -1,
+      "createdAt": "2026-05-05T00:28:36.704Z"
+    },
+    {
+      "id": 10,
+      "title": "Aditya Gadhvi: Live in Concert (Los Angeles)",
+      "slug": "aditya-gadhvi-live-in-concert-2025",
+      "summary": "Aditya Gadhvi’s first concert in Los Angeles — a sold-out night at Saban Theatre, Beverly Hills.",
+      "body": "**Voice of India** presented an unforgettable evening with **Aditya Gadhvi — Live in Concert**, his **first time in Los Angeles**.\n\n### Show details\n- **Date:** Saturday, May 3, 2025\n- **Doors:** 6:00 PM\n- **Venue:** Saban Theatre, 8440 Wilshire Blvd, Beverly Hills, CA 90211\n\n### Tickets\nGeneral tiers ranged from **$39 → $89**, with **VIP $109** and **VVIP $129** for premium seating.\n\n### National promoters\nGKR Productions · Music Kida · Shree Sound · AARNA\n\n---\n\n*Thank you to the LA community that packed Saban Theatre and made this night possible.*",
+      "startAt": "2025-05-04T01:00:00.000Z",
+      "endAt": "2025-05-04T05:00:00.000Z",
+      "location": "Saban Theatre, 8440 Wilshire Blvd, Beverly Hills, CA 90211",
+      "imageUrl": "/images/events/aditya-gadhvi-live-in-concert-2025.png",
+      "ticketUrl": null,
+      "kind": "PAST",
+      "published": true,
+      "sortOrder": 0,
+      "createdAt": "2026-05-05T00:49:24.453Z"
+    },
+    {
+      "id": 11,
+      "title": "Garba with Aditya Gadhvi & Kaviraj — Los Angeles",
+      "slug": "garba-with-aditya-gadhvi-kaviraj-2025",
+      "summary": "A high-energy Garba night with Aditya Gadhvi and Kaviraj at Cerritos College Gym, Norwalk, CA.",
+      "body": "**Voice of India** presented **Garba with Aditya Gadhvi & Kaviraj** — a night of dandiya, raas, and live music.\n\n### Show details\n- **Date:** Saturday, August 30, 2025\n- **Doors:** 7:30 PM\n- **Venue:** Cerritos College Gym, 11110 Alondra Blvd, Norwalk, CA 90650\n\n### Tickets\n- **Early bird:** $39\n- **After August 10:** $49\n\n### Contacts (at the time of event)\n- **Group tickets / booth sponsorship:** Dolly Oza — 949-424-3936\n- **Tickets:** Jay Oza — 714-749-2171 · Jitu & Rina Trivedi — 840-219-5831\n\n---\n\n*Thank you to everyone who came out to dance — proceeds supported Voice of India programs.*",
+      "startAt": "2025-08-31T02:30:00.000Z",
+      "endAt": "2025-08-31T07:00:00.000Z",
+      "location": "Cerritos College Gym, 11110 Alondra Blvd, Norwalk, CA 90650",
+      "imageUrl": "/images/events/garba-aditya-gadhvi-kaviraj-2025.png",
+      "ticketUrl": null,
+      "kind": "PAST",
+      "published": true,
+      "sortOrder": 1,
+      "createdAt": "2026-05-05T00:49:24.460Z"
+    },
+    {
+      "id": 12,
+      "title": "Gujarati Comedy Show with Dr. Jagdish Trivedi",
+      "slug": "gujarati-comedy-show-jagdish-trivedi-2024",
+      "summary": "An evening of Gujarati comedy with Dr. Jagdish Trivedi — free parking and free dinner for all, at Loara High School, Anaheim.",
+      "body": "**Voice of India** presented an evening of Gujarati comedy with **Dr. Jagdish Trivedi**.\n\n> *ત્રણ કલાક, ટેન્શનને તલ્લાક, હસી ખડખડાટ* — three hours, divorce from tension, roaring laughter.\n\n### Show details\n- **Date:** Sunday, June 23, 2024\n- **Time:** 4:30 PM onwards\n- **Venue:** Loara High School, 1765 W Cerritos Ave, Anaheim, CA 92804\n\n### Highlights\n- **Free parking** for all attendees\n- **Free dinner** served for everyone\n\n---\n\n*Thank you to the community that filled the hall and laughed with us.*",
+      "startAt": "2024-06-23T23:30:00.000Z",
+      "endAt": "2024-06-24T03:30:00.000Z",
+      "location": "Loara High School, 1765 W Cerritos Ave, Anaheim, CA 92804",
+      "imageUrl": "/images/events/gujarati-comedy-jagdish-trivedi-2024.png",
+      "ticketUrl": null,
+      "kind": "PAST",
+      "published": true,
+      "sortOrder": 2,
+      "createdAt": "2026-05-05T00:54:52.971Z"
+    },
+    {
+      "id": 13,
+      "title": "Killol in Los Angeles — Kinjal Dave",
+      "slug": "killol-in-los-angeles-kinjal-dave-2024",
+      "summary": "Garba Queen Kinjal Dave live in Los Angeles — a high-energy night presented by Voice of India Group.",
+      "body": "**Voice of India Group** presented **Killol in Los Angeles** featuring the **Garba Queen Kinjal Dave**.\n\n### Show details\n- **Date:** Sunday, September 8, 2024\n- **Time:** 6:00 PM\n- **City:** Los Angeles, CA\n\n### Tickets (at the time of event)\n- **Early bird:** $30 (Sulekha — offer ended July 20, 2024)\n\n### National promoter\n**Manpasand** — +1 (630) 307-2093\n\n---\n\n*A night of dandiya, raas, and music — thank you to everyone who joined us.*",
+      "startAt": "2024-09-09T01:00:00.000Z",
+      "endAt": "2024-09-09T06:00:00.000Z",
+      "location": "Los Angeles, CA",
+      "imageUrl": "/images/events/killol-kinjal-dave-2024.png",
+      "ticketUrl": null,
+      "kind": "PAST",
+      "published": true,
+      "sortOrder": 3,
+      "createdAt": "2026-05-05T00:54:52.980Z"
+    }
+  ],
+  "faqs": [],
+  "albums": [
+    {
+      "id": 3,
+      "title": "Killol in Los Angeles — Kinjal Dave",
+      "slug": "killol-in-los-angeles-kinjal-dave",
+      "description": null,
+      "coverUrl": "/uploads/1777944449929-9cd95d1a-atsapp-image-2026-05-04-at-17.53.32.jpeg",
+      "sortOrder": 0
+    },
+    {
+      "id": 4,
+      "title": "Aditya Gadhvi: Live in Concert (Los Angeles)",
+      "slug": "aditya-gadhvi-live-in-concert-los-angeles",
+      "description": null,
+      "coverUrl": "/uploads/1777944567470-847717a4-app-image-2026-05-04-at-17.47.07-1-.jpeg",
+      "sortOrder": 0
+    },
+    {
+      "id": 5,
+      "title": "Garba with Aditya Gadhvi & Kaviraj — Los Angeles",
+      "slug": "garba-with-aditya-gadhvi-kaviraj-los-angeles",
+      "description": null,
+      "coverUrl": "/uploads/1777944595146-133b0313-atsapp-image-2026-05-04-at-17.47.07.jpeg",
+      "sortOrder": 0
+    },
+    {
+      "id": 6,
+      "title": "VAAT: A Musical Conversation with Hardik Chauhan",
+      "slug": "vaat-a-musical-conversation-with-hardik-chauhan",
+      "description": null,
+      "coverUrl": "/uploads/1777956705668-21b472bf-atsapp-image-2026-04-24-at-21.02.22.jpeg",
+      "sortOrder": 0
+    }
+  ],
+  "images": [
+    {
+      "id": 10,
+      "albumId": 3,
+      "url": "/uploads/1777944397219-b925fdc8-20240908_213846.jpg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 11,
+      "albumId": 3,
+      "url": "/uploads/1777944412527-2772dee9-20240908_220550.jpg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 12,
+      "albumId": 3,
+      "url": "/uploads/1777944419711-e868dca2-20240908_220517.jpg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 13,
+      "albumId": 3,
+      "url": "/uploads/1777944428029-2820f88a-20240908_220508.jpg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 14,
+      "albumId": 4,
+      "url": "/uploads/1777946784666-2bfdc7a6-atsapp-image-2026-05-04-at-19.04.29.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 15,
+      "albumId": 4,
+      "url": "/uploads/1777946793534-631d2dd9-app-image-2026-05-04-at-19.04.31-1-.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 16,
+      "albumId": 4,
+      "url": "/uploads/1777946803533-435f9667-app-image-2026-05-04-at-19.04.31-2-.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 17,
+      "albumId": 4,
+      "url": "/uploads/1777946810387-236cb22d-app-image-2026-05-04-at-19.04.31-6-.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 18,
+      "albumId": 4,
+      "url": "/uploads/1777946820638-8a4c5886-app-image-2026-05-04-at-19.04.31-5-.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 19,
+      "albumId": 4,
+      "url": "/uploads/1777946833519-bd719c54-app-image-2026-05-04-at-19.04.32-3-.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 20,
+      "albumId": 5,
+      "url": "/uploads/1777946866924-cbf56f7a-app-image-2026-05-04-at-19.04.31-7-.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 21,
+      "albumId": 5,
+      "url": "/uploads/1777946877320-36863d5c-app-image-2026-05-04-at-19.04.31-8-.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 22,
+      "albumId": 5,
+      "url": "/uploads/1777946886692-72d3c251-app-image-2026-05-04-at-19.04.31-9-.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 23,
+      "albumId": 5,
+      "url": "/uploads/1777946896017-098fe67e-pp-image-2026-05-04-at-19.04.31-10-.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 24,
+      "albumId": 5,
+      "url": "/uploads/1777946908045-4f651116-app-image-2026-05-04-at-19.04.32-1-.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    },
+    {
+      "id": 25,
+      "albumId": 5,
+      "url": "/uploads/1777946923059-471478e6-atsapp-image-2026-05-04-at-19.04.32.jpeg",
+      "caption": null,
+      "sortOrder": 0
+    }
+  ]
+}

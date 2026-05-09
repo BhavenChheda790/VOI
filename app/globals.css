@@ -1,26 +1,529 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-serif, Georgia, "Times New Roman", serif;
+
+  /* Brand palette: royal blue + golden yellow */
+  --color-voi-ivory: #fdf8f3;
+  --color-voi-maroon: #1e40af;        /* primary blue (token name kept for compat) */
+  --color-voi-maroon-deep: #1e3a8a;   /* deep blue */
+  --color-voi-saffron: #d97706;       /* deep gold */
+  --color-voi-gold: #ca8a04;           /* gold */
+  --color-voi-green: #14532d;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.font-display {
+  font-family: var(--font-display);
+}
+
+:root {
+  --voi-ivory: #fdf8f3;
+  --voi-maroon: #1e40af;
+  --voi-maroon-deep: #1e3a8a;
+  --voi-saffron: #f59e0b;
+  --voi-gold: #d97706;
+  --voi-green: #166534;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: rgba(245, 158, 11, 0.28);
+  color: #1e3a8a;
+}
+
+.voi-page-bg {
+  background-color: #fefcf6;
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -30%, rgba(245, 158, 11, 0.08), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 100% 10%, rgba(30, 64, 175, 0.06), transparent 50%);
+}
+
+/* Rangoli dot grid — subtle colored dot pattern for section backgrounds */
+.voi-rangoli {
+  background-image:
+    radial-gradient(circle at 12px 12px, rgba(194, 65, 12, 0.2) 2px, transparent 2.5px),
+    radial-gradient(circle at 36px 36px, rgba(107, 39, 55, 0.15) 1.5px, transparent 2px),
+    radial-gradient(circle at 60px 12px, rgba(22, 101, 52, 0.18) 1.5px, transparent 2px),
+    radial-gradient(circle at 84px 36px, rgba(217, 119, 6, 0.22) 2px, transparent 2.5px);
+  background-size: 96px 48px;
+}
+
+/* Henna-inspired swirl pattern */
+.voi-henna-bg {
+  background-color: rgba(255, 247, 237, 0.5);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160' opacity='0.1'><g fill='none' stroke='%236b2737' stroke-width='1'><path d='M80 10 Q 110 30 80 60 Q 50 90 80 120 Q 110 150 80 160'/><path d='M40 20 Q 60 40 40 70 Q 20 100 40 130'/><path d='M120 20 Q 100 40 120 70 Q 140 100 120 130'/><circle cx='80' cy='80' r='6' fill='%23c2410c' fill-opacity='0.3'/></g></svg>");
+  background-size: 160px 160px;
+}
+
+/* Gold-foil shimmer */
+.voi-gold-foil {
+  background: linear-gradient(
+    135deg,
+    #fde68a 0%,
+    #fbbf24 25%,
+    #d97706 50%,
+    #fbbf24 75%,
+    #fde68a 100%
+  );
+  background-size: 200% 200%;
+  animation: voi-shimmer 6s ease-in-out infinite;
+}
+
+/* Ornate double-rule divider */
+.voi-ornate-rule {
+  height: 2px;
+  background:
+    linear-gradient(90deg, transparent, #d97706 15%, #6b2737 50%, #d97706 85%, transparent);
+  position: relative;
+}
+.voi-ornate-rule::before,
+.voi-ornate-rule::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(180, 83, 9, 0.5), transparent);
+}
+.voi-ornate-rule::before {
+  top: -4px;
+}
+.voi-ornate-rule::after {
+  bottom: -4px;
+}
+
+/* Heritage silk pattern removed for clean look — kept as no-op for compatibility */
+.voi-heritage-silk {
+  position: relative;
+}
+
+.voi-card-pattern {
+  background-color: rgba(255, 253, 248, 0.65);
+  background-image: radial-gradient(circle at 1px 1px, rgba(30, 64, 175, 0.14) 1.5px, transparent 0);
+  background-size: 22px 22px;
+}
+
+/* Glass surface */
+.voi-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(254, 249, 235, 0.7) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 4px 24px -4px rgba(30, 64, 175, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.voi-glass-dark {
+  background: linear-gradient(145deg, rgba(30, 58, 138, 0.94) 0%, rgba(23, 37, 84, 0.92) 100%);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(253, 230, 138, 0.18);
+}
+
+/* Animations */
+@keyframes voi-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes voi-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes voi-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes voi-pulse-soft {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes voi-rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes voi-rotate-reverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes voi-twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes voi-drift-up {
+  0% {
+    transform: translateY(20px) rotate(-4deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(14deg);
+    opacity: 0;
+  }
+}
+
+@keyframes voi-drift-side {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(12px) rotate(6deg);
+  }
+}
+
+@keyframes voi-ember-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-14px) scale(1.12);
+    opacity: 0.9;
+  }
+}
+
+@keyframes voi-sparkle-burst {
+  0%,
+  100% {
+    transform: scale(0.4) rotate(0deg);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.3) rotate(30deg);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes voi-halo-pulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.35;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.7;
+    filter: hue-rotate(25deg);
+  }
+}
+
+@keyframes voi-rangoli-draw {
+  0% {
+    stroke-dashoffset: 800;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  55% {
+    stroke-dashoffset: 0;
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.9;
+  }
+  100% {
+    stroke-dashoffset: -800;
+    opacity: 0;
+  }
+}
+
+@keyframes voi-aurora-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes voi-ray-sweep {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+    opacity: 0.25;
+  }
+}
+
+@keyframes voi-big-petal-rise {
+  0% {
+    transform: translateY(40px) rotate(-20deg) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  90% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-130vh) rotate(220deg) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes voi-glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 18px 4px rgba(253, 230, 138, 0.5), 0 0 48px 18px rgba(194, 65, 12, 0.25);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 34px 10px rgba(253, 230, 138, 0.85), 0 0 80px 30px rgba(194, 65, 12, 0.45);
+    transform: scale(1.2);
+  }
+}
+
+.voi-sparkle {
+  animation: voi-sparkle-burst 3.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.voi-halo-pulse {
+  animation: voi-halo-pulse 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.voi-rangoli-draw path {
+  stroke-dasharray: 800;
+  animation: voi-rangoli-draw 9s ease-in-out infinite;
+}
+
+.voi-ray-sweep {
+  animation: voi-ray-sweep 40s linear infinite;
+}
+
+.voi-big-petal {
+  animation: voi-big-petal-rise 14s linear infinite;
+}
+
+.voi-glow-pulse {
+  animation: voi-glow-pulse 3.5s ease-in-out infinite;
+}
+
+.voi-aurora {
+  background: linear-gradient(
+    120deg,
+    rgba(30, 64, 175, 0.22) 0%,
+    rgba(245, 158, 11, 0.2) 25%,
+    rgba(37, 99, 235, 0.2) 50%,
+    rgba(217, 119, 6, 0.18) 75%,
+    rgba(30, 64, 175, 0.22) 100%
+  );
+  background-size: 400% 400%;
+  animation: voi-aurora-shift 18s ease-in-out infinite;
+  filter: blur(40px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voi-sparkle,
+  .voi-halo-pulse,
+  .voi-rangoli-draw path,
+  .voi-ray-sweep,
+  .voi-big-petal,
+  .voi-glow-pulse,
+  .voi-aurora {
+    animation: none !important;
+  }
+}
+
+.voi-spin-slow {
+  animation: voi-rotate-slow 60s linear infinite;
+  transform-origin: center;
+}
+.voi-spin-slower {
+  animation: voi-rotate-slow 110s linear infinite;
+  transform-origin: center;
+}
+.voi-spin-reverse {
+  animation: voi-rotate-reverse 80s linear infinite;
+  transform-origin: center;
+}
+.voi-twinkle {
+  animation: voi-twinkle 4.5s ease-in-out infinite;
+}
+.voi-drift-side {
+  animation: voi-drift-side 9s ease-in-out infinite;
+}
+.voi-ember {
+  animation: voi-ember-float 5.5s ease-in-out infinite;
+}
+.voi-petal {
+  animation: voi-drift-up 18s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voi-spin-slow,
+  .voi-spin-slower,
+  .voi-spin-reverse,
+  .voi-twinkle,
+  .voi-drift-side,
+  .voi-ember,
+  .voi-petal,
+  .voi-float-slow,
+  .voi-shimmer-bar {
+    animation: none !important;
+  }
+}
+
+.voi-animate-fade-up {
+  animation: voi-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.voi-delay-1 {
+  animation-delay: 0.08s;
+}
+.voi-delay-2 {
+  animation-delay: 0.16s;
+}
+.voi-delay-3 {
+  animation-delay: 0.24s;
+}
+.voi-delay-4 {
+  animation-delay: 0.32s;
+}
+.voi-delay-5 {
+  animation-delay: 0.4s;
+}
+
+.voi-float-slow {
+  animation: voi-float 7s ease-in-out infinite;
+}
+
+.voi-shimmer-bar {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(253, 230, 138, 0.35),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: voi-shimmer 4s ease-in-out infinite;
+}
+
+/* Primary CTA — royal blue gradient */
+.voi-btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-white shadow-lg transition-all duration-300;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 40%, #1e3a8a 100%);
+  box-shadow:
+    0 10px 28px -6px rgba(30, 64, 175, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.voi-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 36px -8px rgba(30, 64, 175, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+.voi-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Gold CTA — secondary */
+.voi-btn-gold {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-[#1e3a8a] shadow-lg transition-all duration-300;
+  background: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #d97706 100%);
+  box-shadow:
+    0 10px 28px -6px rgba(217, 119, 6, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+.voi-btn-gold:hover {
+  transform: translateY(-2px);
+}
+
+.voi-btn-whatsapp {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-emerald-600/30 px-7 py-3.5 text-sm font-bold text-white transition-all duration-300;
+  background: linear-gradient(135deg, #15803d 0%, #166534 50%, #14532d 100%);
+  box-shadow: 0 10px 28px -6px rgba(22, 101, 52, 0.45);
+}
+.voi-btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -8px rgba(22, 101, 52, 0.55);
+}
+
+/* Card lift */
+.voi-card-hover {
+  @apply transition-all duration-300 ease-out;
+}
+.voi-card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 24px 48px -12px rgba(30, 64, 175, 0.2),
+    0 0 0 1px rgba(245, 158, 11, 0.2);
+}
+
+/* Gradient border helper */
+.voi-ring-gradient {
+  position: relative;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(135deg, rgba(245, 158, 11, 0.6), rgba(30, 64, 175, 0.5), rgba(217, 119, 6, 0.4))
+      border-box;
+  border: 2px solid transparent;
 }

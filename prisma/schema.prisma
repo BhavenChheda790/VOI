@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+  // Relative to this file (web/prisma/) → repo root node_modules (matches hoisted @prisma/client in npm workspaces)
+  output   = "../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model SiteConfig {
+  id Int @id @default(1)
+
+  orgName  String @default("Voice of India (VOI)")
+  tagline  String @default("Empowering start-ups. Guiding students. Uplifting women.")
+  logoUrl  String?
+
+  whatsappCountryCode String @default("1")
+  whatsappLocalNumber String @default("5555555555")
+  zelleEmail          String @default("voiceofindiausa@gmail.com")
+  contactEmail        String @default("voiceofindiausa@gmail.com")
+  instagramUrl        String?
+  facebookUrl         String?
+
+  // Bank / payment details the WhatsApp bot shares with donors
+  bankName            String?
+  bankAccountName     String?
+  bankAccountNumber   String?
+  bankRoutingNumber   String?
+  paymentInstructions String?
+
+  // Bot message templates (override defaults if set)
+  botGreeting     String?
+  botProofAck     String?
+  botConfirmed    String?
+  botRejected     String?
+
+  homeHeroTitle    String
+  homeHeroSubtitle String
+  homeQuote        String
+
+  footerTagline String
+
+  updatedAt DateTime @updatedAt
+}
+
+model Page {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  title     String
+  content   String
+  updatedAt DateTime @updatedAt
+}
+
+model Event {
+  id        Int       @id @default(autoincrement())
+  title     String
+  slug      String    @unique
+  summary   String
+  body      String
+  startAt   DateTime?
+  endAt     DateTime?
+  location  String?
+  imageUrl  String?
+  ticketUrl String?
+  kind      String @default("UPCOMING")
+  published Boolean   @default(true)
+  sortOrder Int       @default(0)
+  createdAt DateTime  @default(now())
+}
+
+/// Curated Q&A for the public site chat assistant (keyword + semantic-style matching).
+model ChatFaq {
+  id        Int      @id @default(autoincrement())
+  question  String
+  answer    String
+  keywords  String? // optional comma-separated triggers, e.g. "tickets,garba,register"
+  sortOrder Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GalleryAlbum {
+  id          Int            @id @default(autoincrement())
+  title       String
+  slug        String         @unique
+  description String?
+  coverUrl    String?
+  sortOrder   Int            @default(0)
+  images      GalleryImage[]
+}
+
+model GalleryImage {
+  id        Int          @id @default(autoincrement())
+  albumId   Int
+  album     GalleryAlbum @relation(fields: [albumId], references: [id], onDelete: Cascade)
+  url       String
+  caption   String?
+  sortOrder Int          @default(0)
+}
+
+model DonationProof {
+  id              Int      @id @default(autoincrement())
+  waProfileName   String?
+  waId            String
+  lastMessage     String?
+  mediaUrl        String?
+  mediaMimeType   String?
+  messageType     String?  // "text" | "image" | "document" | ...
+  status          String   @default("PENDING")
+  botReplied      Boolean  @default(false)
+  donorNotified   Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([waId])
+}

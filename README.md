@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Voice of India — Website
 
-## Getting Started
+Next.js + Prisma (SQLite locally) + admin dashboard + WhatsApp webhook for donation proof intake.
 
-First, run the development server:
+## Quick start
+
+From the **repository root** (recommended — uses npm workspaces):
 
 ```bash
+npm install
+npm run db:migrate
+npm run db:seed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Or from the **`web/`** folder only:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd web
+npm install
+npm run db:migrate
+npx prisma db seed
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Always use the **Prisma version from this project** (`npm run db:migrate` or `cd web && npx prisma`). Running plain `npx prisma` from the repo root can install Prisma 7 and fail (no schema there).
 
-## Learn More
+- Public site: [http://localhost:3000](http://localhost:3000)
+- Admin: [http://localhost:3000/admin/login](http://localhost:3000/admin/login)  
+  Default credentials: `admin@voi.local` / `changeme` (change password by updating the database or re-seeding with a new hash).
 
-To learn more about Next.js, take a look at the following resources:
+Copy `.env.example` to `.env` and adjust `SESSION_SECRET` and `ADMIN_EMAIL` before production.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Use a hosted **PostgreSQL** database (Neon, Supabase, RDS). Set `DATABASE_URL` and run `npx prisma migrate deploy`.
+2. Set strong `SESSION_SECRET` and restrict `ADMIN_EMAIL`.
+3. Deploy on **Vercel** (or similar). Ensure Prisma runs `generate` on install (`postinstall` in `package.json`).
+4. **WhatsApp**: In Meta Developer Console, set the webhook URL to `https://your-domain.com/api/whatsapp` and use the same `WHATSAPP_VERIFY_TOKEN`. Add `WHATSAPP_ACCESS_TOKEN` so image/document messages can resolve media URLs for the admin proofs table.
 
-## Deploy on Vercel
+## Project layout
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `app/(site)/` — public pages (home, dynamic CMS pages, events, gallery).
+- `app/admin/` — content admin (site settings, pages, events, gallery, donation proofs).
+- `app/api/whatsapp/` — Meta WhatsApp webhook (GET verify, POST ingest).
+- `prisma/` — schema, migrations, seed.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Donations are **not** processed by Stripe: the donate page links to WhatsApp; proofs appear under **Admin → WhatsApp donation proofs** when the webhook is configured.
