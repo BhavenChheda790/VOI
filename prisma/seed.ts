@@ -55,7 +55,7 @@ async function main() {
 
   if (dump.siteConfig) {
     const { id: _id, updatedAt: _u, ...rest } = dump.siteConfig as Record<string, unknown>;
-    await prisma.siteConfig.create({ data: { id: 1, ...(rest as object) } });
+    await prisma.siteConfig.create({ data: { id: 1, ...(rest as object) } as never });
   }
 
   for (const p of dump.pages) {
