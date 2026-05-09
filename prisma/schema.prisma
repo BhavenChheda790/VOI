@@ -1,7 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  // Relative to this file (web/prisma/) → repo root node_modules (matches hoisted @prisma/client in npm workspaces)
-  output   = "../../node_modules/.prisma/client"
 }
 
 datasource db {
