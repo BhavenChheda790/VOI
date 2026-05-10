@@ -4,6 +4,7 @@ import { getSiteConfig } from "@/lib/site";
 import {
   buildGreetingMessage,
   buildProofAckMessage,
+  sendWhatsAppImage,
   sendWhatsAppText,
 } from "@/lib/whatsapp";
 
@@ -131,6 +132,29 @@ export async function POST(req: NextRequest) {
           where: { id: proof.id },
           data: { botReplied: true },
         });
+      }
+
+      // After the donation-intent / first-touch greeting, also send the Zelle
+      // QR image with a clear "pay then send screenshot" caption. Only fires
+      // for greetings (replyBody === buildGreetingMessage(...)).
+      const isGreeting = type === "text" && replyBody?.includes("धन्यवाद");
+      if (isGreeting && config.zelleQrUrl) {
+        const origin = req.nextUrl.origin;
+        const qrPublicUrl = `${origin}/api/media/zelle-qr`;
+        await sendWhatsAppImage(
+          from,
+          qrPublicUrl,
+          [
+            "📱 *Scan this QR* in your banking app to pay via Zelle.",
+            "",
+            `*Recipient:* ${config.zelleRecipientName ?? "VOICE OF INDIA CORPORATION"}`,
+            `*Phone:* ${config.zellePhone ?? "909-696-0066"}`,
+            "",
+            "✅ *Once you've paid, please send the payment screenshot here.* Our team will verify and confirm your donation.",
+            "",
+            "🙏 With gratitude — Team VOI.",
+          ].join("\n")
+        );
       }
     }
   }

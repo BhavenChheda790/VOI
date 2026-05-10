@@ -47,6 +47,50 @@ export async function sendWhatsAppText(to: string, body: string): Promise<SendRe
   }
 }
 
+/** Send an image message with optional caption. `imageLink` must be a public HTTPS URL. */
+export async function sendWhatsAppImage(
+  to: string,
+  imageLink: string,
+  caption?: string
+): Promise<SendResult> {
+  const creds = getCredentials();
+  if (!creds) {
+    console.warn("[whatsapp] credentials not set — skipping image send");
+    return { ok: false, status: 0, body: "missing credentials" };
+  }
+  const to_digits = to.replace(/\D/g, "");
+  if (!to_digits) return { ok: false, status: 0, body: "invalid recipient" };
+
+  const url = `https://graph.facebook.com/${GRAPH_API_VERSION}/${creds.phoneNumberId}/messages`;
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${creds.token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        messaging_product: "whatsapp",
+        recipient_type: "individual",
+        to: to_digits,
+        type: "image",
+        image: {
+          link: imageLink,
+          ...(caption ? { caption } : {}),
+        },
+      }),
+    });
+    const json = await res.json().catch(() => null);
+    if (!res.ok) {
+      console.error("[whatsapp] image send failed", res.status, json);
+    }
+    return { ok: res.ok, status: res.status, body: json };
+  } catch (err) {
+    console.error("[whatsapp] image send threw", err);
+    return { ok: false, status: 0, body: String(err) };
+  }
+}
+
 function firstName(profileName: string | null | undefined): string {
   if (!profileName) return "friend";
   const n = profileName.trim().split(/\s+/)[0];
