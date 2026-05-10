@@ -105,10 +105,10 @@ export default async function ContentPage({
           ) : null}
 
           {slug === "contact" && config ? (
-            <div className="mb-10 grid gap-3 sm:grid-cols-2">
+            <div className="mb-10">
               <a
                 href={`mailto:${config.contactEmail}`}
-                className="group rounded-xl border border-stone-200 bg-white p-5 transition hover:border-stone-300"
+                className="group block rounded-xl border border-stone-200 bg-white p-5 transition hover:border-stone-300"
               >
                 <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#d97706]">Email</p>
                 <p className="mt-2 font-display text-base text-stone-900 group-hover:underline">
@@ -116,20 +116,6 @@ export default async function ContentPage({
                 </p>
                 <p className="mt-1 text-xs text-stone-500">We reply within 1–2 business days.</p>
               </a>
-              {contactWa ? (
-                <a
-                  href={contactWa}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group rounded-xl border border-emerald-200 bg-emerald-50/60 p-5 transition hover:border-emerald-300"
-                >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-emerald-800">WhatsApp</p>
-                  <p className="mt-2 font-display text-base text-emerald-900 group-hover:underline">
-                    +{config.whatsappCountryCode} {config.whatsappLocalNumber}
-                  </p>
-                  <p className="mt-1 text-xs text-emerald-900/70">Fastest way to reach our team.</p>
-                </a>
-              ) : null}
             </div>
           ) : null}
 
