@@ -36,6 +36,8 @@ export default async function SiteLayout({
           zellePhone={config.zellePhone ?? "909-696-0066"}
           zelleEmail={config.zelleEmail}
           whatsappHref={popupWa}
+          logoUrl={config.logoUrl}
+          orgName={config.orgName}
         />
       ) : null}
     </>
