@@ -8,6 +8,13 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
     ],
   },
+  async redirects() {
+    return [
+      // Homepage temporarily serves as About — redirect /about to home for the event.
+      // To revert: remove this entry and re-add the About link in components/SiteHeader.tsx.
+      { source: "/about", destination: "/", permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;
