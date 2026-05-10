@@ -1,46 +1,56 @@
 import Image from "next/image";
+import Link from "next/link";
+import { CornerMotif, GoldDivider, LotusDot } from "@/components/Accents";
+import { BrandLogo } from "@/components/BrandLogo";
+import { HeroOrnament, MeshBlob, SectionDivider } from "@/components/BrandMotif";
+import { IconArrowRight, IconLotus } from "@/components/Icons";
 import { getSiteConfig } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
 /**
  * NOTE — Homepage temporarily replaced ahead of the upcoming event.
- * The original marketing homepage (hero, sponsor tiers, gau seva, past events,
- * mission, etc.) is preserved at:
- *
+ * Original marketing homepage preserved at:
  *   web/app/(site)/_home-original.txt
- *
- * To restore: copy that file's contents back into this file. Or in git:
- *   git show 06719f1:app/\(site\)/page.tsx > app/\(site\)/page.tsx
+ * Restore by copying the file's contents back into this file.
  */
 export default async function HomePage() {
   const config = await getSiteConfig();
-  const websiteUrl = "https://voi24.org";
 
   return (
     <>
-      {/* TOP BANNER — Logo, big title, tagline, INSPIRE • MOTIVATE • SUPPORT */}
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
-          <div className="grid items-center gap-8 lg:grid-cols-[auto_1fr_auto]">
+      {/* ============== TOP BANNER ============== */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#fffbeb]/40 to-white">
+        <MeshBlob className="-top-24 -left-20 h-72 w-72" color="from-[#f59e0b]/15 to-[#1e40af]/10" />
+        <MeshBlob className="-top-32 -right-32 h-96 w-96" color="from-[#1e40af]/10 to-[#f59e0b]/15" />
+
+        <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+          <div className="grid items-center gap-10 lg:grid-cols-[auto_1fr_auto]">
+            {/* Brand seal */}
             <div className="mx-auto h-32 w-32 shrink-0 sm:h-36 sm:w-36 lg:mx-0">
-              <BrandSeal />
+              <BrandLogo className="h-full w-full drop-shadow-sm" />
             </div>
 
+            {/* Title */}
             <div className="text-center lg:text-left">
-              <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-[#1e3a8a] sm:text-6xl lg:text-7xl">
+              <p className="inline-flex items-center gap-2 rounded-full border border-[#1e40af]/15 bg-[#1e40af]/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#1e40af]">
+                <LotusDot className="h-3.5 w-3.5" />
+                California 501(c)(3) — diaspora community
+              </p>
+              <h1 className="mt-4 font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-[#1e3a8a] sm:text-6xl lg:text-7xl">
                 VOICE OF
                 <br />
                 INDIA <span className="text-[#d97706]">USA</span>
               </h1>
-              <div className="mt-4 flex items-center justify-center gap-3 lg:justify-start">
-                <span className="h-px w-12 bg-[#d97706]/60" />
-                <span className="text-lg text-[#d97706]">★ ★ ★</span>
-                <span className="h-px w-12 bg-[#d97706]/60" />
+              <div className="mt-5 flex items-center justify-center gap-3 lg:justify-start">
+                <span className="h-px w-14 bg-[#d97706]/60" />
+                <span className="text-base text-[#d97706]">★ ★ ★</span>
+                <span className="h-px w-14 bg-[#d97706]/60" />
               </div>
             </div>
 
-            <div className="border-t border-stone-200 pt-6 text-center lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 lg:text-left">
+            {/* Tagline column */}
+            <div className="border-t border-stone-200 pt-6 text-center lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0 lg:text-left">
               <p className="font-display text-xl font-bold text-[#1e3a8a] sm:text-2xl">
                 Empowering Community.
               </p>
@@ -53,27 +63,43 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="mt-10 flex items-center justify-center gap-6 sm:gap-12">
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#1e3a8a] sm:text-sm">
+          {/* INSPIRE • MOTIVATE • SUPPORT pills */}
+          <div className="mt-12 flex items-center justify-center gap-6 sm:gap-12">
+            <span className="text-xs font-bold uppercase tracking-[0.32em] text-[#1e3a8a] sm:text-sm">
               INSPIRE
             </span>
-            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#d97706]" />
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#1e3a8a] sm:text-sm">
+            <span aria-hidden className="h-2 w-2 rotate-45 bg-[#d97706]" />
+            <span className="text-xs font-bold uppercase tracking-[0.32em] text-[#1e3a8a] sm:text-sm">
               MOTIVATE
             </span>
-            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#d97706]" />
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#1e3a8a] sm:text-sm">
+            <span aria-hidden className="h-2 w-2 rotate-45 bg-[#d97706]" />
+            <span className="text-xs font-bold uppercase tracking-[0.32em] text-[#1e3a8a] sm:text-sm">
               SUPPORT
             </span>
           </div>
         </div>
       </section>
 
-      {/* HERO — TOGETHER WE EMPOWER + photo collage */}
-      <section className="relative bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#1e3a8a] text-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_1.5fr] lg:items-center">
+      {/* ============== HERO IMPACT ============== */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#1e3a8a] via-[#1e40af] to-[#172554] text-white">
+        <MeshBlob className="-top-32 right-1/3 h-96 w-96" color="from-[#fbbf24]/15 to-transparent" />
+        <MeshBlob className="-bottom-40 -left-20 h-96 w-96" color="from-[#1e40af]/30 to-[#fbbf24]/10" />
+
+        {/* Subtle radial pattern dots */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, white 1px, transparent 1.5px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+
+        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+          <div className="grid gap-14 lg:grid-cols-[1.05fr_1.4fr] lg:items-center">
             <div>
+              <HeroOrnament className="mb-6 h-6 w-32 text-[#fbbf24]/70" />
               <h2 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-6xl">
                 TOGETHER,
                 <br />
@@ -83,169 +109,159 @@ export default async function HomePage() {
                 <br />
                 WE <span className="text-[#fbbf24]">INSPIRE</span>.
               </h2>
-              <p className="mt-6 max-w-md text-lg text-stone-200">
-                Building a stronger community for a brighter future.
+              <p className="mt-7 max-w-md text-lg leading-relaxed text-stone-200">
+                Building a stronger community for a brighter future — through cultural celebration,
+                women-led leadership, and student mentorship across California.
               </p>
+
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link
+                  href="/events/upcoming"
+                  className="inline-flex items-center gap-2 rounded-md bg-[#f59e0b] px-5 py-2.5 text-sm font-semibold text-stone-900 shadow-sm transition hover:bg-[#d97706] hover:text-white"
+                >
+                  See upcoming events
+                  <IconArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/donate"
+                  className="inline-flex items-center gap-2 rounded-md border border-white/30 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  Support our mission
+                </Link>
+              </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              <CollageImg
-                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
-                alt="Women collaborating"
-              />
-              <CollageImg
-                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80"
-                alt="Hands joined together"
-              />
-              <CollageImg
-                src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=600&q=80"
-                alt="Family"
-              />
-              <CollageImg
-                src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80"
-                alt="Volunteers"
-              />
+            {/* Photo collage */}
+            <div className="relative">
+              <CornerMotif className="absolute -left-4 -top-4 hidden h-14 w-14 lg:block" />
+              <CornerMotif className="absolute -bottom-4 -right-4 hidden h-14 w-14 rotate-180 lg:block" />
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <CollageImg
+                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
+                  alt="Women collaborating"
+                />
+                <CollageImg
+                  src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80"
+                  alt="Hands joined together"
+                />
+                <CollageImg
+                  src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=600&q=80"
+                  alt="Family"
+                />
+                <CollageImg
+                  src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80"
+                  alt="Volunteers"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5 PILLARS */}
-      <section className="bg-[#1e3a8a] pb-20 pt-2 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+      {/* ============== 5 PILLARS ============== */}
+      <section className="relative overflow-hidden bg-[#fffbeb]/50">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+          <div className="text-center">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#d97706]">
+              What we stand for
+            </p>
+            <h2 className="mt-2 font-display text-3xl font-semibold text-stone-900 sm:text-4xl">
+              Five pillars, one community
+            </h2>
+            <GoldDivider className="mt-6" />
+          </div>
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             <Pillar
-              title="COMMUNITY ENGAGEMENT"
-              desc="Building meaningful connections"
+              title="Community Engagement"
+              desc="Building meaningful connections across the diaspora"
               Icon={CommunityIcon}
             />
             <Pillar
-              title="WOMEN EMPOWERMENT"
-              desc="Empowering women to lead and grow"
+              title="Women Empowerment"
+              desc="Empowering women to lead, learn, and grow"
               Icon={WomanIcon}
             />
             <Pillar
-              title="YOUTH LEADERSHIP"
-              desc="Inspiring and developing future leaders"
+              title="Youth Leadership"
+              desc="Inspiring and developing the next generation of leaders"
               Icon={YouthIcon}
             />
             <Pillar
-              title="CULTURAL PRESERVATION"
-              desc="Preserving our rich heritage and values"
+              title="Cultural Preservation"
+              desc="Preserving our rich heritage, language, and values"
               Icon={TempleIcon}
             />
             <Pillar
-              title="CREATING IMPACT"
-              desc="Creating positive change together"
+              title="Creating Impact"
+              desc="Turning every gathering into measurable change"
               Icon={HeartIcon}
             />
           </div>
         </div>
       </section>
 
-      {/* MISSION + QR + CONNECT */}
-      <section className="bg-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-3 lg:items-start">
-          <div>
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1e3a8a]">
-                <CommunityIcon size={20} color="#ffffff" />
-              </div>
-              <h3 className="font-display text-xl font-extrabold uppercase tracking-wide text-[#1e3a8a]">
-                Our Mission
-              </h3>
-            </div>
-            <p className="mt-4 leading-relaxed text-stone-700">
-              Uplifting our community by preserving Indian culture and creating meaningful experiences
-              that inspire unity, growth, and connection.
-            </p>
+      {/* ============== OUR MISSION ============== */}
+      <section className="relative bg-white">
+        <div className="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6">
+          <SectionDivider className="mb-10 text-[#d97706]" />
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#d97706]">
+            Our Mission
+          </p>
+          <p className="mt-6 font-display text-2xl font-medium leading-relaxed text-stone-800 sm:text-3xl">
+            “Uplifting our community by preserving Indian culture and creating
+            meaningful experiences that inspire <span className="text-[#1e3a8a]">unity</span>,
+            <span className="text-[#1e3a8a]"> growth</span>, and
+            <span className="text-[#d97706]"> connection</span>.”
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 rounded-md bg-[#1e40af] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1e3a8a]"
+            >
+              Read our story
+              <IconArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-md border border-stone-300 px-5 py-2.5 text-sm font-semibold text-stone-700 transition hover:border-stone-400"
+            >
+              Get involved
+            </Link>
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2 rounded-md border border-stone-300 px-5 py-2.5 text-sm font-semibold text-stone-700 transition hover:border-stone-400"
+            >
+              Browse gallery
+            </Link>
           </div>
 
-          <div className="flex flex-col items-center text-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(websiteUrl)}`}
-              alt="QR code linking to voi24.org"
-              width={170}
-              height={170}
-              className="rounded shadow-sm"
-            />
-            <p className="mt-3 font-display text-base font-extrabold uppercase tracking-wide text-[#1e3a8a]">
-              Scan to Connect
-            </p>
-            <p className="mt-1 max-w-[16rem] text-sm text-stone-600">
-              Join us. Support us. Be a part of the change.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-display text-xl font-extrabold uppercase tracking-wide text-[#1e3a8a]">
-              Connect With Us
-            </h3>
-            <ul className="mt-4 space-y-3 text-stone-700">
-              <li className="flex items-center gap-3">
-                <span aria-hidden className="text-[#1e3a8a]">✉</span>
-                <a
-                  href={`mailto:${config.contactEmail}`}
-                  className="hover:text-[#1e3a8a] hover:underline"
-                >
-                  {config.contactEmail}
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <span aria-hidden className="text-[#1e3a8a]">🌐</span>
-                <a href={websiteUrl} className="hover:text-[#1e3a8a] hover:underline">
-                  www.voi24.org
-                </a>
-              </li>
-              {config.facebookUrl ? (
-                <li className="flex items-center gap-3">
-                  <span aria-hidden className="font-bold text-[#1e3a8a]">f</span>
-                  <a
-                    href={config.facebookUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-[#1e3a8a] hover:underline"
-                  >
-                    voiceofindiausa
-                  </a>
-                </li>
-              ) : null}
-              {config.instagramUrl ? (
-                <li className="flex items-center gap-3">
-                  <span aria-hidden className="text-[#1e3a8a]">📷</span>
-                  <a
-                    href={config.instagramUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-[#1e3a8a] hover:underline"
-                  >
-                    voiceofindiausa
-                  </a>
-                </li>
-              ) : null}
-            </ul>
-          </div>
+          <p className="mt-8 text-sm text-stone-500">
+            <IconLotus className="mr-1 inline h-4 w-4 text-[#d97706]" />
+            {config.orgName} — {config.tagline}
+          </p>
         </div>
       </section>
     </>
   );
 }
 
-// ============================================================
-// Helper components
-// ============================================================
+/* ============================================================
+   Helper components
+   ============================================================ */
 
 function CollageImg({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative aspect-[3/4] overflow-hidden rounded-xl border-2 border-[#fbbf24]/40 shadow-lg">
+    <div className="group relative aspect-[3/4] overflow-hidden rounded-xl border-2 border-[#fbbf24]/40 shadow-lg ring-1 ring-white/10 transition duration-500 hover:border-[#fbbf24]/80 hover:shadow-xl">
       <Image
         src={src}
         alt={alt}
         fill
-        className="object-cover"
+        className="object-cover transition duration-700 group-hover:scale-[1.05]"
         sizes="(max-width:640px) 50vw, 25vw"
       />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#1e3a8a]/30 to-transparent opacity-60" />
     </div>
   );
 }
@@ -262,34 +278,25 @@ function Pillar({
   Icon: IconComponent;
 }) {
   return (
-    <div className="text-center">
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#fbbf24]/70">
+    <div className="group relative flex flex-col items-center rounded-xl border border-stone-200 bg-white p-6 text-center shadow-sm transition hover:-translate-y-1 hover:border-[#d97706]/40 hover:shadow-md">
+      <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#1e40af] to-[#1e3a8a] text-white shadow-md ring-4 ring-[#fbbf24]/30 transition group-hover:ring-[#fbbf24]/60">
         <Icon size={28} />
       </div>
-      <h3 className="mt-4 font-display text-sm font-extrabold uppercase tracking-wide">{title}</h3>
-      <p className="mt-2 text-xs leading-relaxed text-stone-300">{desc}</p>
+      <h3 className="mt-5 font-display text-sm font-extrabold uppercase tracking-wide text-stone-900">
+        {title}
+      </h3>
+      <p className="mt-2 text-xs leading-relaxed text-stone-600">{desc}</p>
+      <span
+        aria-hidden
+        className="mt-4 h-px w-10 bg-gradient-to-r from-transparent via-[#d97706]/60 to-transparent transition group-hover:w-16"
+      />
     </div>
   );
 }
 
-function BrandSeal() {
-  return (
-    <svg viewBox="0 0 144 144" className="h-full w-full" aria-label="Voice of India USA seal">
-      <circle cx="72" cy="72" r="70" fill="#fff" stroke="#1e3a8a" strokeWidth="2" />
-      <circle cx="72" cy="72" r="60" fill="none" stroke="#d97706" strokeWidth="1.5" />
-      <path
-        d="M72 96 C72 96, 50 78, 50 64 C50 56, 56 50, 62 50 C66 50, 70 53, 72 56 C74 53, 78 50, 82 50 C88 50, 94 56, 94 64 C94 78, 72 96, 72 96 Z"
-        fill="#d97706"
-      />
-      <path
-        d="M48 88 Q60 100, 72 100 Q84 100, 96 88 L96 100 Q72 112, 48 100 Z"
-        fill="#1e3a8a"
-      />
-    </svg>
-  );
-}
+/* ============== Pillar icons (clean SVGs) ============== */
 
-function CommunityIcon({ size = 28, color = "#ffffff" }: { size?: number; color?: string }) {
+function CommunityIcon({ size = 28, color = "currentColor" }: { size?: number; color?: string }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
       <path d="M9 12c2.21 0 4-1.79 4-4S11.21 4 9 4 5 5.79 5 8s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm8-2c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.95v2h6v-2c0-2.66-4.33-4-7-4z" />
@@ -297,7 +304,7 @@ function CommunityIcon({ size = 28, color = "#ffffff" }: { size?: number; color?
   );
 }
 
-function WomanIcon({ size = 28, color = "#ffffff" }: { size?: number; color?: string }) {
+function WomanIcon({ size = 28, color = "currentColor" }: { size?: number; color?: string }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
       <circle cx="12" cy="4" r="2.5" />
@@ -306,18 +313,18 @@ function WomanIcon({ size = 28, color = "#ffffff" }: { size?: number; color?: st
   );
 }
 
-function YouthIcon({ size = 28, color = "#ffffff" }: { size?: number; color?: string }) {
+function YouthIcon({ size = 28, color = "currentColor" }: { size?: number; color?: string }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
       <circle cx="12" cy="6" r="3" />
       <path d="M12 11c-3 0-7 1.5-7 4.5V20h14v-4.5c0-3-4-4.5-7-4.5z" />
-      <path d="M5 14c-1.5 0-3 0.7-3 2v3h3v-5z" opacity="0.7" />
-      <path d="M19 14c1.5 0 3 0.7 3 2v3h-3v-5z" opacity="0.7" />
+      <circle cx="6" cy="9" r="2" opacity="0.7" />
+      <circle cx="18" cy="9" r="2" opacity="0.7" />
     </svg>
   );
 }
 
-function TempleIcon({ size = 28, color = "#ffffff" }: { size?: number; color?: string }) {
+function TempleIcon({ size = 28, color = "currentColor" }: { size?: number; color?: string }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
       <path d="M12 2L2 7v2h20V7l-10-5zm-7 9v8H3v2h18v-2h-2v-8h-2v8h-2v-8h-2v8h-2v-8h-2v8H7v-8H5z" />
@@ -325,7 +332,7 @@ function TempleIcon({ size = 28, color = "#ffffff" }: { size?: number; color?: s
   );
 }
 
-function HeartIcon({ size = 28, color = "#ffffff" }: { size?: number; color?: string }) {
+function HeartIcon({ size = 28, color = "currentColor" }: { size?: number; color?: string }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
