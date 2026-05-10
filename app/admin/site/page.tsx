@@ -89,6 +89,36 @@ export default async function AdminSitePage({
               rows={3}
             />
           </fieldset>
+          <fieldset className="space-y-4 rounded-lg border border-amber-200 bg-amber-50/40 p-5">
+            <legend className="-ml-1 px-1 text-sm font-semibold text-stone-900">
+              Event thank-you popup
+            </legend>
+            <p className="text-xs text-stone-600">
+              When enabled, every visitor sees a centered modal thanking them and offering Zelle /
+              WhatsApp donate options. Suppressed for the rest of their browser session once
+              dismissed; reappears on next visit. Toggle off when no longer relevant.
+            </p>
+            <label className="flex items-center gap-3 text-sm font-semibold text-stone-900">
+              <input
+                type="checkbox"
+                name="popupEnabled"
+                defaultChecked={c.popupEnabled}
+                className="h-4 w-4 rounded border-stone-300 text-[#1e40af] focus:ring-[#1e40af]"
+              />
+              Enable popup site-wide
+            </label>
+            <Field
+              label="Popup title"
+              name="popupTitle"
+              defaultValue={c.popupTitle ?? ""}
+            />
+            <Area
+              label="Popup message"
+              name="popupMessage"
+              defaultValue={c.popupMessage ?? ""}
+              rows={4}
+            />
+          </fieldset>
           <fieldset className="space-y-4">
             <legend className="text-sm font-semibold text-stone-900">Bot message templates (optional overrides)</legend>
             <p className="text-xs text-stone-500">
