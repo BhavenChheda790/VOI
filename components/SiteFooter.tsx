@@ -61,9 +61,6 @@ export function SiteFooter({ config }: { config: SiteConfig }) {
                   Facebook
                 </a>
               ) : null}
-              <Link href="/admin/login" className="text-stone-400 transition hover:text-stone-600">
-                Admin
-              </Link>
             </div>
           </div>
         </div>
