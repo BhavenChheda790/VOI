@@ -6,6 +6,34 @@ import { HeroOrnament, MeshBlob, SectionDivider } from "@/components/BrandMotif"
 import { IconArrowRight, IconLotus } from "@/components/Icons";
 import { getSiteConfig } from "@/lib/site";
 
+/** World-map silhouette used as a very subtle background — like the printed poster. */
+function WorldMapBg({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 1200 600"
+      fill="none"
+      aria-hidden
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <pattern id="dotPattern" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+          <circle cx="1.2" cy="1.2" r="1.2" fill="#1e3a8a" />
+        </pattern>
+        <mask id="worldMask">
+          {/* Crude continents silhouette */}
+          <rect width="1200" height="600" fill="black" />
+          <path
+            d="M150 220 q40 -60 110 -50 q70 10 100 40 q60 60 30 120 q-30 60 -100 70 q-100 0 -130 -50 q-30 -60 -10 -130z M340 200 q60 -50 140 -30 q90 30 150 80 q40 60 0 110 q-50 60 -160 50 q-100 -10 -140 -60 q-30 -60 10 -150z M560 240 q70 -40 150 -10 q90 40 130 90 q30 50 -10 90 q-50 50 -150 30 q-100 -10 -140 -60 q-30 -60 20 -140z M780 200 q70 -40 160 -20 q90 40 130 100 q30 60 -20 110 q-60 50 -180 30 q-100 -20 -130 -80 q-20 -60 40 -140z M260 380 q60 -20 110 0 q60 30 30 70 q-40 50 -110 40 q-50 -10 -60 -50 q-10 -40 30 -60z"
+            fill="white"
+          />
+        </mask>
+      </defs>
+      <rect width="1200" height="600" fill="url(#dotPattern)" mask="url(#worldMask)" />
+    </svg>
+  );
+}
+
 export const dynamic = "force-dynamic";
 
 /**
@@ -20,64 +48,96 @@ export default async function HomePage() {
   return (
     <>
       {/* ============== TOP BANNER ============== */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#fffbeb]/40 to-white">
-        <MeshBlob className="-top-24 -left-20 h-72 w-72" color="from-[#f59e0b]/15 to-[#1e40af]/10" />
-        <MeshBlob className="-top-32 -right-32 h-96 w-96" color="from-[#1e40af]/10 to-[#f59e0b]/15" />
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#fff7ed] via-[#fffbeb] to-white">
+        {/* Subtle world map pattern in background */}
+        <WorldMapBg className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.05]" />
 
-        <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-          <div className="grid items-center gap-10 lg:grid-cols-[auto_1fr_auto]">
-            {/* Brand seal */}
-            <div className="mx-auto h-32 w-32 shrink-0 sm:h-36 sm:w-36 lg:mx-0">
-              <BrandLogo className="h-full w-full drop-shadow-sm" />
+        {/* Soft blurred color blobs */}
+        <MeshBlob className="-left-24 top-10 h-80 w-80" color="from-[#f59e0b]/20 to-[#1e40af]/10" />
+        <MeshBlob className="-right-32 -top-20 h-[28rem] w-[28rem]" color="from-[#1e40af]/15 to-[#f59e0b]/15" />
+        <MeshBlob className="bottom-0 left-1/3 h-72 w-72" color="from-[#fbbf24]/20 to-transparent" />
+
+        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-[auto_1fr_auto]">
+            {/* Logo with soft glow */}
+            <div className="relative mx-auto shrink-0 lg:mx-0">
+              {/* Glow halo */}
+              <div
+                aria-hidden
+                className="absolute inset-0 -m-8 rounded-full bg-gradient-to-br from-[#f59e0b]/30 via-[#fbbf24]/20 to-[#1e40af]/20 blur-2xl"
+              />
+              {/* Decorative outer ring */}
+              <div
+                aria-hidden
+                className="absolute inset-0 -m-3 rounded-full border-2 border-dashed border-[#d97706]/25"
+              />
+              <div className="relative h-44 w-44 sm:h-52 sm:w-52 lg:h-56 lg:w-56">
+                {config.logoUrl ? (
+                  <Image
+                    src={config.logoUrl}
+                    alt={`${config.orgName} logo`}
+                    fill
+                    priority
+                    sizes="(max-width:640px) 11rem, 14rem"
+                    className="object-contain drop-shadow-[0_8px_20px_rgba(30,58,138,0.25)]"
+                  />
+                ) : (
+                  <BrandLogo className="h-full w-full drop-shadow-sm" />
+                )}
+              </div>
             </div>
 
             {/* Title */}
             <div className="text-center lg:text-left">
-              <p className="inline-flex items-center gap-2 rounded-full border border-[#1e40af]/15 bg-[#1e40af]/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#1e40af]">
+              <p className="inline-flex items-center gap-2 rounded-full border border-[#1e40af]/15 bg-white/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#1e40af] shadow-sm backdrop-blur">
                 <LotusDot className="h-3.5 w-3.5" />
                 California 501(c)(3) — diaspora community
               </p>
-              <h1 className="mt-4 font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-[#1e3a8a] sm:text-6xl lg:text-7xl">
+              <h1 className="mt-5 font-display text-5xl font-extrabold leading-[0.92] tracking-tight text-[#1e3a8a] sm:text-6xl lg:text-7xl">
                 VOICE OF
                 <br />
-                INDIA <span className="text-[#d97706]">USA</span>
+                INDIA{" "}
+                <span className="bg-gradient-to-br from-[#f59e0b] via-[#d97706] to-[#b45309] bg-clip-text text-transparent">
+                  USA
+                </span>
               </h1>
-              <div className="mt-5 flex items-center justify-center gap-3 lg:justify-start">
-                <span className="h-px w-14 bg-[#d97706]/60" />
-                <span className="text-base text-[#d97706]">★ ★ ★</span>
-                <span className="h-px w-14 bg-[#d97706]/60" />
+              <div className="mt-6 flex items-center justify-center gap-3 lg:justify-start">
+                <span className="h-px w-14 bg-gradient-to-r from-transparent to-[#d97706]/70" />
+                <span className="text-lg text-[#d97706]">★ ★ ★</span>
+                <span className="h-px w-14 bg-gradient-to-l from-transparent to-[#d97706]/70" />
               </div>
             </div>
 
             {/* Tagline column */}
-            <div className="border-t border-stone-200 pt-6 text-center lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0 lg:text-left">
-              <p className="font-display text-xl font-bold text-[#1e3a8a] sm:text-2xl">
+            <div className="relative border-t border-stone-200 pt-6 text-center lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0 lg:text-left">
+              <p className="font-display text-xl font-bold leading-snug text-[#1e3a8a] sm:text-2xl">
                 Empowering Community.
               </p>
-              <p className="font-display text-xl font-bold text-[#1e3a8a] sm:text-2xl">
+              <p className="mt-1 font-display text-xl font-bold leading-snug text-[#1e3a8a] sm:text-2xl">
                 Preserving Culture.
               </p>
-              <p className="font-display text-xl font-bold text-[#d97706] sm:text-2xl">
+              <p className="mt-1 font-display text-xl font-bold leading-snug text-[#d97706] sm:text-2xl">
                 Inspiring Unity.
               </p>
             </div>
           </div>
 
           {/* INSPIRE • MOTIVATE • SUPPORT pills */}
-          <div className="mt-12 flex items-center justify-center gap-6 sm:gap-12">
-            <span className="text-xs font-bold uppercase tracking-[0.32em] text-[#1e3a8a] sm:text-sm">
-              INSPIRE
-            </span>
-            <span aria-hidden className="h-2 w-2 rotate-45 bg-[#d97706]" />
-            <span className="text-xs font-bold uppercase tracking-[0.32em] text-[#1e3a8a] sm:text-sm">
-              MOTIVATE
-            </span>
-            <span aria-hidden className="h-2 w-2 rotate-45 bg-[#d97706]" />
-            <span className="text-xs font-bold uppercase tracking-[0.32em] text-[#1e3a8a] sm:text-sm">
-              SUPPORT
-            </span>
+          <div className="mt-14 flex items-center justify-center gap-5 sm:gap-10">
+            <Pill text="INSPIRE" />
+            <Diamond />
+            <Pill text="MOTIVATE" />
+            <Diamond />
+            <Pill text="SUPPORT" />
           </div>
         </div>
+
+        {/* Soft curved transition into hero — mimics the printed poster */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 -bottom-1 h-12 bg-gradient-to-b from-transparent to-[#1e3a8a]"
+          style={{ clipPath: "ellipse(75% 100% at 50% 100%)" }}
+        />
       </section>
 
       {/* ============== HERO IMPACT ============== */}
@@ -250,6 +310,23 @@ export default async function HomePage() {
 /* ============================================================
    Helper components
    ============================================================ */
+
+function Pill({ text }: { text: string }) {
+  return (
+    <span className="font-display text-sm font-bold uppercase tracking-[0.32em] text-[#1e3a8a] sm:text-base">
+      {text}
+    </span>
+  );
+}
+
+function Diamond() {
+  return (
+    <span aria-hidden className="relative flex h-3 w-3 items-center justify-center">
+      <span className="absolute inset-0 rotate-45 rounded-[2px] bg-[#d97706]" />
+      <span className="absolute inset-0 -m-1 rotate-45 rounded-[2px] border border-[#d97706]/30" />
+    </span>
+  );
+}
 
 function CollageImg({ src, alt }: { src: string; alt: string }) {
   return (
