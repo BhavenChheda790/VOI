@@ -1,6 +1,3 @@
-import { mkdir, writeFile } from "node:fs/promises";
-import { extname, join } from "node:path";
-import { randomBytes } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 
@@ -13,15 +10,10 @@ const ALLOWED_TYPES = new Set([
   "image/gif",
   "image/svg+xml",
 ]);
-const MAX_BYTES = 8 * 1024 * 1024; // 8 MB
-
-const EXT_BY_MIME: Record<string, string> = {
-  "image/png": ".png",
-  "image/jpeg": ".jpg",
-  "image/webp": ".webp",
-  "image/gif": ".gif",
-  "image/svg+xml": ".svg",
-};
+// Vercel's serverless filesystem is read-only, so we encode uploads as data URLs
+// stored directly in the DB. Keep the cap small to avoid bloating SiteConfig /
+// Page rows. For larger media, switch this route to Vercel Blob / S3.
+const MAX_BYTES = 1 * 1024 * 1024; // 1 MB
 
 export async function POST(req: NextRequest) {
   if (!(await getSession())) {
@@ -47,28 +39,15 @@ export async function POST(req: NextRequest) {
   }
   if (file.size > MAX_BYTES) {
     return NextResponse.json(
-      { error: `File too large (max ${MAX_BYTES / 1024 / 1024} MB)` },
+      {
+        error: `File too large — max 1 MB, got ${(file.size / 1024).toFixed(0)} KB. Compress the image and try again.`,
+      },
       { status: 413 }
     );
   }
 
   const buf = Buffer.from(await file.arrayBuffer());
-  const safeOriginal = file.name
-    .toLowerCase()
-    .replace(/[^a-z0-9._-]+/g, "-")
-    .replace(/^[-.]+|[-.]+$/g, "")
-    .slice(-40);
-  const fallbackExt = EXT_BY_MIME[file.type] ?? "";
-  const originalExt = extname(safeOriginal);
-  const ext = originalExt || fallbackExt;
-  const stem = (originalExt ? safeOriginal.slice(0, -originalExt.length) : safeOriginal) || "image";
-  const random = randomBytes(4).toString("hex");
-  const filename = `${Date.now()}-${random}-${stem}${ext}`;
+  const dataUrl = `data:${file.type};base64,${buf.toString("base64")}`;
 
-  const uploadDir = join(process.cwd(), "public", "uploads");
-  await mkdir(uploadDir, { recursive: true });
-  await writeFile(join(uploadDir, filename), buf);
-
-  const url = `/uploads/${filename}`;
-  return NextResponse.json({ url });
+  return NextResponse.json({ url: dataUrl });
 }
