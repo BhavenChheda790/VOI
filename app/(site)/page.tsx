@@ -21,39 +21,17 @@ export default async function HomePage() {
   return (
     <>
       {/* ============== TOP BANNER ============== */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#fff7ed] via-[#fffbeb] to-white">
-        {/* Aurora gradient + soft blobs */}
-        <div aria-hidden className="voi-aurora absolute inset-0" />
-        <MeshBlob className="-left-24 top-10 h-80 w-80" color="from-[#f59e0b]/20 to-[#1e40af]/10" />
-        <MeshBlob className="-right-32 -top-20 h-[28rem] w-[28rem]" color="from-[#1e40af]/15 to-[#f59e0b]/15" />
-        <MeshBlob className="bottom-0 left-1/3 h-72 w-72" color="from-[#fbbf24]/25 to-transparent" />
-
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#fffaf0] via-white to-white">
         <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-[auto_1fr_auto]">
-            {/* Logo with animated halo */}
+            {/* Logo — clean, no busy effects */}
             <div className="relative mx-auto shrink-0 lg:mx-0">
-              {/* Pulsing halo behind logo */}
+              {/* Single soft warm glow (no animation, no hue shift) */}
               <div
                 aria-hidden
-                className="voi-halo-pulse absolute inset-0 -m-10 rounded-full bg-[radial-gradient(circle,rgba(245,158,11,0.4)_0%,rgba(30,64,175,0.18)_45%,transparent_70%)] blur-2xl"
+                className="absolute inset-0 -m-6 rounded-full bg-[radial-gradient(circle,rgba(245,158,11,0.18)_0%,transparent_65%)] blur-xl"
               />
-              {/* Slow rotating ray sweep */}
-              <div
-                aria-hidden
-                className="voi-ray-sweep pointer-events-none absolute left-1/2 top-1/2 h-[140%] w-[140%] -translate-x-1/2 -translate-y-1/2 opacity-40"
-                style={{
-                  background:
-                    "conic-gradient(from 0deg, transparent 0deg, rgba(245,158,11,0.25) 30deg, transparent 60deg, transparent 180deg, rgba(245,158,11,0.18) 210deg, transparent 240deg)",
-                  borderRadius: "50%",
-                }}
-              />
-              {/* Sparkles */}
-              <Sparkle className="-top-2 left-2" delay="0s" />
-              <Sparkle className="-right-1 top-6" delay="1.4s" />
-              <Sparkle className="-bottom-1 right-4" delay="0.7s" />
-              <Sparkle className="-left-2 bottom-8" delay="2.1s" />
-
-              {/* Logo (floating gently) */}
+              {/* Logo (gently floats vertically) */}
               <div className="voi-float-slow relative h-44 w-44 sm:h-52 sm:w-52 lg:h-56 lg:w-56">
                 {config.logoUrl ? (
                   <Image
@@ -62,7 +40,7 @@ export default async function HomePage() {
                     fill
                     priority
                     sizes="(max-width:640px) 11rem, 14rem"
-                    className="object-contain drop-shadow-[0_12px_28px_rgba(30,58,138,0.3)]"
+                    className="object-contain drop-shadow-[0_10px_24px_rgba(30,58,138,0.18)]"
                   />
                 ) : (
                   <BrandLogo className="h-full w-full drop-shadow-md" />
@@ -274,18 +252,6 @@ export default async function HomePage() {
 /* ============================================================
    Helper components
    ============================================================ */
-
-function Sparkle({ className = "", delay = "0s" }: { className?: string; delay?: string }) {
-  return (
-    <span
-      aria-hidden
-      className={`voi-sparkle absolute h-2.5 w-2.5 ${className}`}
-      style={{ animationDelay: delay }}
-    >
-      <span className="block h-full w-full rotate-45 bg-gradient-to-br from-[#fde68a] via-[#fbbf24] to-[#d97706] shadow-[0_0_8px_rgba(245,158,11,0.7)]" />
-    </span>
-  );
-}
 
 function Pill({ text }: { text: string }) {
   return (
