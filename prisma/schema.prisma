@@ -35,6 +35,11 @@ model SiteConfig {
   bankRoutingNumber   String?
   paymentInstructions String?
 
+  // Zelle payment helpers (shown on /donate)
+  zelleRecipientName  String?
+  zellePhone          String?
+  zelleQrUrl          String?
+
   // Bot message templates (override defaults if set)
   botGreeting     String?
   botProofAck     String?

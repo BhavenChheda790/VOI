@@ -57,6 +57,21 @@ export default async function AdminSitePage({
             <Field label="Zelle email (shown on donate page & bot greeting)" name="zelleEmail" defaultValue={c.zelleEmail} type="email" />
           </fieldset>
           <fieldset className="space-y-4">
+            <legend className="text-sm font-semibold text-stone-900">Zelle (phone + QR)</legend>
+            <p className="text-xs text-stone-500">
+              These show on the public donate page. Leave blank to hide.
+            </p>
+            <Field label="Zelle recipient name" name="zelleRecipientName" defaultValue={c.zelleRecipientName ?? ""} />
+            <Field label="Zelle phone number" name="zellePhone" defaultValue={c.zellePhone ?? ""} />
+            <ImageUpload
+              label="Zelle QR code"
+              name="zelleQrUrl"
+              defaultValue={c.zelleQrUrl ?? ""}
+              hint="Upload the Zelle 'Send money' QR from your banking app. PNG works best."
+              previewAspect="square"
+            />
+          </fieldset>
+          <fieldset className="space-y-4">
             <legend className="text-sm font-semibold text-stone-900">Bank details (bot shares with donors)</legend>
             <p className="text-xs text-stone-500">
               The WhatsApp bot auto-sends these details when a donor messages. Leave blank to omit from the greeting.

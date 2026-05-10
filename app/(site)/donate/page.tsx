@@ -19,10 +19,10 @@ export default async function DonatePage() {
     "Hello, I would like to donate to Voice of India."
   );
 
-  // Zelle recipient (registered to phone number) — keep as constants for now;
-  // can be moved to SiteConfig later.
-  const zelleName = "VOICE OF INDIA CORPORATION";
-  const zellePhone = "909-696-0066";
+  // Zelle details — admin-managed via /admin/site, with sensible defaults.
+  const zelleName = config.zelleRecipientName ?? "VOICE OF INDIA CORPORATION";
+  const zellePhone = config.zellePhone ?? "909-696-0066";
+  const zelleQrUrl = config.zelleQrUrl;
 
   return (
     <>
@@ -64,19 +64,26 @@ export default async function DonatePage() {
                   Scan in your banking app to pay.
                 </p>
 
-                {/* QR */}
-                <div className="mt-6 flex justify-center">
-                  <div className="rounded-xl border-2 border-purple-100 bg-white p-3 shadow-sm">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/zelle-qr.png"
-                      alt={`Zelle QR code for ${zelleName}`}
-                      width={208}
-                      height={208}
-                      className="h-52 w-52 object-contain"
-                    />
+                {/* QR (only if uploaded via admin) */}
+                {zelleQrUrl ? (
+                  <div className="mt-6 flex justify-center">
+                    <div className="rounded-xl border-2 border-purple-100 bg-white p-3 shadow-sm">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={zelleQrUrl}
+                        alt={`Zelle QR code for ${zelleName}`}
+                        width={208}
+                        height={208}
+                        className="h-52 w-52 object-contain"
+                      />
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="mt-6 rounded-xl border-2 border-dashed border-purple-200 bg-purple-50/40 p-6 text-center text-sm text-purple-700">
+                    Look up <span className="font-semibold">{zelleName}</span> by phone in your
+                    banking app, or scan the QR after the admin uploads it.
+                  </div>
+                )}
 
                 {/* Recipient */}
                 <div className="mt-6 rounded-xl bg-purple-50 p-5 text-center">
