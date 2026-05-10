@@ -129,52 +129,63 @@ const offerings = [
 ];
 
 function CulturalIcon({ className = "h-7 w-7" }: { className?: string }) {
-  // Two dancing figures
+  // Diya (oil lamp) — quintessential Indian festival symbol
   return (
-    <svg viewBox="0 0 32 32" fill="currentColor" className={className} aria-hidden>
-      <circle cx="10" cy="6" r="2.5" />
-      <path d="M10 9.5c-1.7 0-2.8 1.2-3 3l-.7 4.5h2l.5 4-1.3 5h2L11 22l1.5 4h2L13.2 21l.5-4h2l-.7-4.5c-.2-1.8-1.3-3-3-3z" />
-      <circle cx="22" cy="6" r="2.5" />
-      <path d="M22 9.5c-1.7 0-2.8 1.2-3 3l-.7 4.5h2l.5 4-1.3 5h2L23 22l1.5 4h2L25.2 21l.5-4h2l-.7-4.5c-.2-1.8-1.3-3-3-3z" />
-      <path
-        d="M14 4 q2 -2 4 0"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        fill="none"
-        strokeLinecap="round"
-      />
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
+      {/* Flame */}
+      <path d="M12 3c-.6.9-1.5 2-1.5 3.2 0 1.1.7 1.8 1.5 2 .8-.2 1.5-.9 1.5-2C13.5 5 12.6 3.9 12 3z" />
+      {/* Lamp bowl */}
+      <path d="M4 12c0 .8.4 1.6 1.1 2L4 16h2.5c1.4 1.5 3.3 2.5 5.5 2.5s4.1-1 5.5-2.5H20l-1.1-2c.7-.4 1.1-1.2 1.1-2H4z" />
+      {/* Bowl base */}
+      <path d="M3 11h18c0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1z" />
+      {/* Wick */}
+      <path d="M11.5 8h1v3h-1z" />
     </svg>
   );
 }
 
 function PeopleIcon({ className = "h-7 w-7" }: { className?: string }) {
+  // Group of 3 people clearly visible — community
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
-      <circle cx="9" cy="8" r="3" />
-      <circle cx="17" cy="6" r="2.2" />
-      <path d="M2 18c0-2.5 3-4 7-4s7 1.5 7 4v2H2v-2zm15-4c2.5 0 5 1 5 3v3h-5v-2c0-1.5-.7-2.7-1.7-3.6.6-.3 1.1-.4 1.7-.4z" />
+      {/* Center person */}
+      <circle cx="12" cy="6" r="2.6" />
+      <path d="M12 9.5c-2.4 0-4 1.4-4 3.5v6h8v-6c0-2.1-1.6-3.5-4-3.5z" />
+      {/* Left person */}
+      <circle cx="5" cy="7.5" r="2" />
+      <path d="M5 10.5c-1.8 0-3 1-3 2.7V19h3.5v-5.7c0-.7.2-1.3.5-1.8-.3-.3-.6-.5-1-1z" />
+      {/* Right person */}
+      <circle cx="19" cy="7.5" r="2" />
+      <path d="M19 10.5c1.8 0 3 1 3 2.7V19h-3.5v-5.7c0-.7-.2-1.3-.5-1.8.3-.3.6-.5 1-1z" />
     </svg>
   );
 }
 
 function WomanIcon({ className = "h-7 w-7" }: { className?: string }) {
+  // Female silhouette with distinctive A-line dress + hair
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
-      <circle cx="12" cy="6" r="3" />
-      <path d="M12 11c-3 0-5 1.5-5 4v8h3v-6h4v6h3v-8c0-2.5-2-4-5-4z" />
+      {/* Hair behind head */}
+      <path d="M8.5 5.5c0-2 1.5-3.5 3.5-3.5s3.5 1.5 3.5 3.5v2.5h-7V5.5z" opacity="0.85" />
+      {/* Head */}
+      <circle cx="12" cy="6" r="2.6" />
+      {/* Triangle dress */}
+      <path d="M12 9.2c-1.4 0-2.5.7-3 2L6 19h3l1-3v6h4v-6l1 3h3l-3-7.8c-.5-1.3-1.6-2-3-2z" />
     </svg>
   );
 }
 
 function NetworkIcon({ className = "h-7 w-7" }: { className?: string }) {
-  // Champagne glass + sparkle (entertainment)
+  // Two clinking champagne flutes — celebration / networking
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
-      <path d="M7 2h10l-1 6c0 2.5-2 4.5-4 4.7V18h3v2H9v-2h3v-5.3c-2-0.2-4-2.2-4-4.7L7 2zm2 2l.7 4h4.6L15 4H9z" />
+      {/* Left glass (tilted right) */}
+      <path d="M4.5 3l1.2 5.5c.3 1.4 1.2 2.5 2.5 2.9l-1 7.6L5.5 20v1.5h6V20l-1.7-1 1-7.6c1.3-.4 2.2-1.5 2.5-2.9L14.5 3h-10z" />
+      <path d="M5.7 4.5l.6 2.5h6.4l.6-2.5z" fill="white" opacity="0.4" />
+      {/* Right glass (tilted left, flipped) */}
       <path
-        d="M19 4 l1 1 l1 -1 l-1 -1 z M20 8 l0.5 0.5 l0.5 -0.5 l-0.5 -0.5 z"
-        fill="currentColor"
-        opacity="0.7"
+        d="M19.5 3l-1.2 5.5c-.3 1.4-1.2 2.5-2.5 2.9l1 7.6 1.7 1v1.5h-6V20l1.7-1-1-7.6c-1.3-.4-2.2-1.5-2.5-2.9L9.5 3h10z"
+        opacity="0.55"
       />
     </svg>
   );
