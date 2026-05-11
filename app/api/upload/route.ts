@@ -11,9 +11,10 @@ const ALLOWED_TYPES = new Set([
   "image/svg+xml",
 ]);
 // Vercel's serverless filesystem is read-only, so we encode uploads as data URLs
-// stored directly in the DB. Keep the cap small to avoid bloating SiteConfig /
-// Page rows. For larger media, switch this route to Vercel Blob / S3.
-const MAX_BYTES = 1 * 1024 * 1024; // 1 MB
+// stored directly in the DB. 4 MB fits typical phone photos after base64 expansion
+// stays under Vercel's ~4.5 MB function body cap. For higher volume, move to
+// Vercel Blob / S3.
+const MAX_BYTES = 4 * 1024 * 1024; // 4 MB
 
 export async function POST(req: NextRequest) {
   if (!(await getSession())) {
@@ -40,7 +41,7 @@ export async function POST(req: NextRequest) {
   if (file.size > MAX_BYTES) {
     return NextResponse.json(
       {
-        error: `File too large — max 1 MB, got ${(file.size / 1024).toFixed(0)} KB. Compress the image and try again.`,
+        error: `File too large — max 4 MB, got ${(file.size / 1024 / 1024).toFixed(1)} MB. Resize the image (try TinyPNG or your phone's "Mail Small" option) and try again.`,
       },
       { status: 413 }
     );
