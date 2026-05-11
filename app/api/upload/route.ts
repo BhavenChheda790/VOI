@@ -75,12 +75,14 @@ export async function POST(req: NextRequest) {
       const blob = await put(`uploads/${filename}`, file, {
         access: "public",
         contentType: file.type,
+        addRandomSuffix: false,
       });
       return NextResponse.json({ url: blob.url });
     } catch (err) {
-      console.error("[upload] blob.put failed", err);
+      const detail = err instanceof Error ? err.message : String(err);
+      console.error("[upload] blob.put failed:", detail);
       return NextResponse.json(
-        { error: "Storage error — try again or contact support" },
+        { error: `Blob storage error: ${detail}` },
         { status: 500 }
       );
     }
