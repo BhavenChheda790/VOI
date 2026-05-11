@@ -1,3 +1,6 @@
+import { put } from "@vercel/blob";
+import { randomBytes } from "node:crypto";
+import { extname } from "node:path";
 import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 
@@ -10,11 +13,15 @@ const ALLOWED_TYPES = new Set([
   "image/gif",
   "image/svg+xml",
 ]);
-// Vercel's serverless filesystem is read-only, so we encode uploads as data URLs
-// stored directly in the DB. 4 MB fits typical phone photos after base64 expansion
-// stays under Vercel's ~4.5 MB function body cap. For higher volume, move to
-// Vercel Blob / S3.
 const MAX_BYTES = 4 * 1024 * 1024; // 4 MB
+
+const EXT_BY_MIME: Record<string, string> = {
+  "image/png": ".png",
+  "image/jpeg": ".jpg",
+  "image/webp": ".webp",
+  "image/gif": ".gif",
+  "image/svg+xml": ".svg",
+};
 
 export async function POST(req: NextRequest) {
   if (!(await getSession())) {
@@ -41,14 +48,56 @@ export async function POST(req: NextRequest) {
   if (file.size > MAX_BYTES) {
     return NextResponse.json(
       {
-        error: `File too large — max 4 MB, got ${(file.size / 1024 / 1024).toFixed(1)} MB. Resize the image (try TinyPNG or your phone's "Mail Small" option) and try again.`,
+        error: `File too large — max 4 MB, got ${(file.size / 1024 / 1024).toFixed(1)} MB. Compress at tinypng.com and retry.`,
       },
       { status: 413 }
     );
   }
 
+  // Build a stable, safe filename
+  const safeOriginal = file.name
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]+/g, "-")
+    .replace(/^[-.]+|[-.]+$/g, "")
+    .slice(-40);
+  const fallbackExt = EXT_BY_MIME[file.type] ?? "";
+  const originalExt = extname(safeOriginal);
+  const ext = originalExt || fallbackExt;
+  const stem =
+    (originalExt ? safeOriginal.slice(0, -originalExt.length) : safeOriginal) ||
+    "image";
+  const random = randomBytes(4).toString("hex");
+  const filename = `${Date.now()}-${random}-${stem}${ext}`;
+
+  // Vercel Blob — production. Requires BLOB_READ_WRITE_TOKEN in env.
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    try {
+      const blob = await put(`uploads/${filename}`, file, {
+        access: "public",
+        contentType: file.type,
+      });
+      return NextResponse.json({ url: blob.url });
+    } catch (err) {
+      console.error("[upload] blob.put failed", err);
+      return NextResponse.json(
+        { error: "Storage error — try again or contact support" },
+        { status: 500 }
+      );
+    }
+  }
+
+  // Fallback for local dev / when Blob isn't connected — encode as data URL.
+  // Only safe for small files; rejected if it would exceed Vercel's response cap.
+  if (file.size > 1 * 1024 * 1024) {
+    return NextResponse.json(
+      {
+        error:
+          "Blob storage not configured. Files over 1 MB need Vercel Blob. Connect a Blob store in Vercel → Storage and redeploy.",
+      },
+      { status: 503 }
+    );
+  }
   const buf = Buffer.from(await file.arrayBuffer());
   const dataUrl = `data:${file.type};base64,${buf.toString("base64")}`;
-
   return NextResponse.json({ url: dataUrl });
 }
