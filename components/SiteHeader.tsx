@@ -9,7 +9,6 @@ const nav = [
   // "About" removed — homepage already serves as About-style landing for the event.
   // To restore later: { href: "/about", label: "About" },
   { href: "/what-we-do", label: "What we do" },
-  { href: "/career", label: "Career" },
   { href: "/events/upcoming", label: "Events" },
   { href: "/events/past", label: "Past" },
   { href: "/gallery", label: "Gallery" },
@@ -17,6 +16,7 @@ const nav = [
   { href: "/community", label: "Community" },
   { href: "/donate", label: "Donate" },
   { href: "/contact", label: "Contact" },
+  { href: "/career", label: "Career" },
 ];
 
 export function SiteHeader({ config }: { config: SiteConfig }) {
