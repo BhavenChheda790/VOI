@@ -11,10 +11,7 @@ export const metadata = { title: "Career & Internships" };
 // Paste any https://docs.google.com/forms/... URL here.
 const REGISTER_URL = "https://forms.gle/REPLACE_WITH_YOUR_FORM_ID";
 
-// TODO: save the 3-panel infographic to web/public/images/internship-poster.png
-// (or upload via admin once Vercel Blob is set up — then change this to the
-// blob URL). Until the file exists, the page shows a friendly placeholder.
-const POSTER_PATH = "/images/internship-poster.png";
+const POSTER_PATH = "/images/internship-poster.jpg";
 
 export default async function CareerPage() {
   const config = await getSiteConfig();
