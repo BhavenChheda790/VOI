@@ -9,6 +9,7 @@ const nav = [
   // "About" removed — homepage already serves as About-style landing for the event.
   // To restore later: { href: "/about", label: "About" },
   { href: "/what-we-do", label: "What we do" },
+  { href: "/career", label: "Career" },
   { href: "/events/upcoming", label: "Events" },
   { href: "/events/past", label: "Past" },
   { href: "/gallery", label: "Gallery" },
