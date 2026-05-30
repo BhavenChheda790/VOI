@@ -41,7 +41,7 @@ export default async function SummerInternshipPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-[#1e3a8a] via-[#1e40af] to-[#172554] text-white">
         <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[#fbbf24]/20 blur-3xl" />
         <div aria-hidden className="pointer-events-none absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-[#1e40af]/40 blur-3xl" />
-        <div className="relative mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
+        <div className="relative mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-24">
           {/* Breadcrumb */}
           <Link
             href="/career"
@@ -49,17 +49,41 @@ export default async function SummerInternshipPage() {
           >
             ← Back to Career
           </Link>
-          <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.22em] text-[#fbbf24]">
-            Voice of India USA · Internship Connections
+
+          {/* Position badge */}
+          <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#fbbf24]/40 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#fbbf24] backdrop-blur">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#fbbf24]" />
+            Now hiring — Open position
           </p>
+
+          {/* Position title */}
           <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Your dream internship is{" "}
-            <span className="text-[#fbbf24]">closer than you think</span>
+            Summer Internship <span className="text-[#fbbf24]">2026</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-200">
+
+          {/* Position meta — location / type / fields */}
+          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-stone-200">
+            <span className="inline-flex items-center gap-1.5">
+              <PinIcon />
+              California / Remote
+            </span>
+            <span className="hidden text-stone-500 sm:inline">·</span>
+            <span className="inline-flex items-center gap-1.5">
+              <ClockIcon />
+              Summer · Part-time
+            </span>
+            <span className="hidden text-stone-500 sm:inline">·</span>
+            <span className="inline-flex items-center gap-1.5">
+              <BriefcaseIcon />
+              Business · Marketing · Finance · Healthcare
+            </span>
+          </div>
+
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-stone-200">
             We connect motivated students with corporations that value potential, passion, and
-            purpose. We don&apos;t offer internships — we open doors to them.
+            purpose. <strong className="text-white">We don&apos;t offer internships — we open doors to them.</strong>
           </p>
+
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={APPLICATION_PDF}
@@ -76,6 +100,23 @@ export default async function SummerInternshipPage() {
             >
               Email us
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ============== POSITION SUMMARY CARD (sticks under hero) ============== */}
+      <section className="bg-white">
+        <div className="mx-auto -mt-10 max-w-5xl px-4 sm:px-6">
+          <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-lg sm:p-7">
+            <div className="grid gap-6 sm:grid-cols-4">
+              <SummaryCell label="Position" value="Summer Internship 2026" />
+              <SummaryCell label="Location" value="California / Remote" />
+              <SummaryCell label="Type" value="Summer · Part-time" />
+              <SummaryCell
+                label="How to apply"
+                value="Fill PDF + email résumé"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -279,11 +320,15 @@ export default async function SummerInternshipPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-[#1e3a8a] via-[#1e40af] to-[#172554] text-white">
         <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#fbbf24]/20 blur-3xl" />
         <div className="relative mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-          <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#fbbf24]">
+            Summer Internship 2026
+          </p>
+          <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight sm:text-4xl">
             Ready to take the next step?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-stone-200">
-            Let us help you find the right opportunity to launch your career.
+            Download the application, attach your résumé, and email it to us. We&apos;ll review and
+            reply within 3 business days.
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <a
@@ -308,6 +353,41 @@ export default async function SummerInternshipPage() {
         </div>
       </section>
     </>
+  );
+}
+
+function SummaryCell({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="border-b border-stone-200 pb-4 last:border-b-0 last:pb-0 sm:border-b-0 sm:border-r sm:pb-0 sm:pr-4 sm:last:border-r-0 sm:last:pr-0">
+      <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#d97706]">
+        {label}
+      </p>
+      <p className="mt-1 font-display text-base font-bold text-stone-900">{value}</p>
+    </div>
+  );
+}
+
+function PinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#fbbf24]" fill="currentColor" aria-hidden>
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+    </svg>
+  );
+}
+
+function ClockIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#fbbf24]" fill="currentColor" aria-hidden>
+      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.5 5h-1.5v6l5 3 .75-1.23-4.25-2.52z" />
+    </svg>
+  );
+}
+
+function BriefcaseIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#fbbf24]" fill="currentColor" aria-hidden>
+      <path d="M20 6h-4V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4z" />
+    </svg>
   );
 }
 
