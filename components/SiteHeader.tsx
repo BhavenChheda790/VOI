@@ -15,8 +15,8 @@ const nav = [
   { href: "/social-work", label: "Social work" },
   { href: "/community", label: "Community" },
   { href: "/donate", label: "Donate" },
-  { href: "/contact", label: "Contact" },
   { href: "/career", label: "Career" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader({ config }: { config: SiteConfig }) {
