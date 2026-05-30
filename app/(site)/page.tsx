@@ -4,8 +4,14 @@ import { CornerMotif, GoldDivider, LotusDot } from "@/components/Accents";
 import { BrandLogo } from "@/components/BrandLogo";
 import { HeroOrnament, MeshBlob, SectionDivider } from "@/components/BrandMotif";
 import { IconArrowRight, IconLotus } from "@/components/Icons";
+import { InfiniteImageMarquee } from "@/components/InfiniteImageMarquee";
 import { Reveal } from "@/components/Reveal";
 import { getSiteConfig } from "@/lib/site";
+
+const communityImages = Array.from({ length: 10 }, (_, i) => ({
+  src: `/images/community/community-${String(i + 1).padStart(2, "0")}.jpg`,
+  alt: `Voice of India USA community moment ${i + 1}`,
+}));
 
 export const dynamic = "force-dynamic";
 
@@ -152,24 +158,7 @@ export default async function HomePage() {
               <div className="relative">
                 <CornerMotif className="absolute -left-4 -top-4 hidden h-14 w-14 lg:block" />
                 <CornerMotif className="absolute -bottom-4 -right-4 hidden h-14 w-14 rotate-180 lg:block" />
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  <CollageImg
-                    src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
-                    alt="Women collaborating"
-                  />
-                  <CollageImg
-                    src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80"
-                    alt="Hands joined together"
-                  />
-                  <CollageImg
-                    src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=600&q=80"
-                    alt="Family"
-                  />
-                  <CollageImg
-                    src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80"
-                    alt="Volunteers"
-                  />
-                </div>
+                <InfiniteImageMarquee images={communityImages} speedSeconds={40} />
               </div>
             </Reveal>
           </div>
@@ -265,21 +254,6 @@ function Diamond() {
       <span className="absolute inset-0 rotate-45 rounded-[2px] bg-[#d97706]" />
       <span className="absolute inset-0 -m-1 rotate-45 rounded-[2px] border border-[#d97706]/30" />
     </span>
-  );
-}
-
-function CollageImg({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className="group relative aspect-[3/4] overflow-hidden rounded-xl border-2 border-[#fbbf24]/40 shadow-lg ring-1 ring-white/10 transition duration-500 hover:border-[#fbbf24]/80 hover:shadow-xl">
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className="object-cover transition duration-700 group-hover:scale-[1.05]"
-        sizes="(max-width:640px) 50vw, 25vw"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1e3a8a]/30 to-transparent opacity-60" />
-    </div>
   );
 }
 

@@ -457,6 +457,30 @@ html {
   animation: voi-float 7s ease-in-out infinite;
 }
 
+/* Infinite horizontal image marquee */
+@keyframes voi-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* track holds 2 copies of the list -> -50% lands cleanly on the start of
+       the second copy, producing a seamless infinite loop. */
+    transform: translateX(-50%);
+  }
+}
+.voi-marquee-track {
+  animation: voi-marquee-scroll var(--voi-marquee-duration, 35s) linear infinite;
+  will-change: transform;
+}
+.voi-marquee:hover .voi-marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .voi-marquee-track {
+    animation: none !important;
+  }
+}
+
 .voi-shimmer-bar {
   background: linear-gradient(
     90deg,
