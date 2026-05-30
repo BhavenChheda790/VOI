@@ -457,6 +457,41 @@ html {
   animation: voi-float 7s ease-in-out infinite;
 }
 
+/* Rotating word — fade + slide-up per word change */
+@keyframes voi-rotating-word-in {
+  0% {
+    opacity: 0;
+    transform: translateY(60%);
+    filter: blur(4px);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30%);
+    filter: blur(2px);
+  }
+}
+.voi-rotating-word {
+  animation: voi-rotating-word-in 2.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .voi-rotating-word {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
 /* Infinite horizontal image marquee */
 @keyframes voi-marquee-scroll {
   from {

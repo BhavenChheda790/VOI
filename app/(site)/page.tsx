@@ -6,6 +6,7 @@ import { HeroOrnament, MeshBlob, SectionDivider } from "@/components/BrandMotif"
 import { IconArrowRight, IconLotus } from "@/components/Icons";
 import { InfiniteImageMarquee } from "@/components/InfiniteImageMarquee";
 import { Reveal } from "@/components/Reveal";
+import { RotatingWord } from "@/components/RotatingWord";
 import { getSiteConfig } from "@/lib/site";
 
 const communityImages = Array.from({ length: 10 }, (_, i) => ({
@@ -125,12 +126,23 @@ export default async function HomePage() {
             <div className="text-center">
               <HeroOrnament className="mx-auto mb-6 h-6 w-32 text-[#fbbf24]/70" />
               <h2 className="mx-auto font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-                TOGETHER, WE{" "}
-                <span className="text-[#fbbf24]">EMPOWER</span>.
-                <br className="hidden sm:block" />
+                TOGETHER,{" "}
                 <span className="block sm:inline">
-                  {" "}WE <span className="text-[#fbbf24]">PRESERVE</span>. WE{" "}
-                  <span className="text-[#fbbf24]">INSPIRE</span>.
+                  WE{" "}
+                  <RotatingWord
+                    className="text-[#fbbf24]"
+                    words={[
+                      "EMPOWER",
+                      "PRESERVE",
+                      "INSPIRE",
+                      "CONNECT",
+                      "CELEBRATE",
+                      "UPLIFT",
+                      "MENTOR",
+                      "LEAD",
+                    ]}
+                  />
+                  .
                 </span>
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-stone-200">
