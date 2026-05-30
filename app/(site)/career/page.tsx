@@ -10,10 +10,10 @@ export const metadata = { title: "Career & Internships" };
 const openings = [
   {
     title: "Summer Internship 2026",
-    location: "California / Remote",
-    type: "Summer · Part-time",
+    location: "In-person · California (assigned location)",
+    type: "Summer · Part-time · In office",
     description:
-      "A structured summer internship for students pursuing careers in business, marketing, finance, or healthcare. We pair you with a corporate partner, mentor you throughout, and help you build real-world experience.",
+      "A structured in-person summer internship for students pursuing careers in business, marketing, finance, or healthcare. You'll work on-site at an assigned corporate partner's office, with mentorship throughout, building real-world experience.",
     href: "/career/summer-internship-2026",
   },
 ];

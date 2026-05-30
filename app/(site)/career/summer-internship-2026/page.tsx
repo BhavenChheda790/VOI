@@ -65,12 +65,12 @@ export default async function SummerInternshipPage() {
           <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-stone-200">
             <span className="inline-flex items-center gap-1.5">
               <PinIcon />
-              California / Remote
+              In-person · California (assigned location)
             </span>
             <span className="hidden text-stone-500 sm:inline">·</span>
             <span className="inline-flex items-center gap-1.5">
               <ClockIcon />
-              Summer · Part-time
+              Summer · Part-time · In office
             </span>
             <span className="hidden text-stone-500 sm:inline">·</span>
             <span className="inline-flex items-center gap-1.5">
@@ -82,6 +82,9 @@ export default async function SummerInternshipPage() {
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-stone-200">
             We connect motivated students with corporations that value potential, passion, and
             purpose. <strong className="text-white">We don&apos;t offer internships — we open doors to them.</strong>
+          </p>
+          <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-[#fbbf24]/40 bg-[#fbbf24]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#fbbf24]">
+            ⚠ This is an in-person, in-office role — not remote
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -110,8 +113,8 @@ export default async function SummerInternshipPage() {
           <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-lg sm:p-7">
             <div className="grid gap-6 sm:grid-cols-4">
               <SummaryCell label="Position" value="Summer Internship 2026" />
-              <SummaryCell label="Location" value="California / Remote" />
-              <SummaryCell label="Type" value="Summer · Part-time" />
+              <SummaryCell label="Location" value="In-person · California" />
+              <SummaryCell label="Work mode" value="In office · assigned" />
               <SummaryCell
                 label="How to apply"
                 value="Fill PDF + email résumé"
