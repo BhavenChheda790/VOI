@@ -8,22 +8,14 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "Career & Internships" };
 
 const APPLICATION_PDF = "/forms/Summer_Internship_Application.pdf";
-const POSTER_PATH = "/images/internship-poster.jpg";
 
 const openings = [
   {
-    title: "Summer Internship — Marketing & Social Media",
+    title: "Summer Internship 2026",
     location: "California / Remote",
     type: "Summer · Part-time",
     description:
-      "Help shape Voice of India USA's marketing presence. Work on campaigns, content, and community outreach with mentorship from senior partners.",
-  },
-  {
-    title: "Summer Internship — Business & Operations",
-    location: "California / Remote",
-    type: "Summer · Part-time",
-    description:
-      "Support program operations and corporate partnerships. Build real-world business and project management experience.",
+      "A structured summer internship for students pursuing careers in business, marketing, finance, or healthcare. We pair you with a corporate partner that fits your goals, provide mentorship throughout, and help you build real-world experience and a professional network.",
   },
 ];
 
@@ -106,22 +98,6 @@ export default async function CareerPage() {
               Download application
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* ============== POSTER ============== */}
-      <section className="bg-stone-50/40">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-16">
-          <Reveal>
-            <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={POSTER_PATH}
-                alt="Voice of India USA — Internship Connections poster"
-                className="h-auto w-full"
-              />
-            </div>
-          </Reveal>
         </div>
       </section>
 
