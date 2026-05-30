@@ -2,15 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 import type { SiteConfig } from "@prisma/client";
 import { BrandMark } from "@/components/BrandLogo";
+import { EventsDropdown } from "@/components/EventsDropdown";
 import { IconWhatsApp } from "@/components/Icons";
 import { whatsappHref } from "@/lib/site";
 
+// "About" removed — homepage already serves as About-style landing for the event.
+// "Events" + "Past" are merged into the EventsDropdown ("Our Events" with submenu).
 const nav = [
-  // "About" removed — homepage already serves as About-style landing for the event.
-  // To restore later: { href: "/about", label: "About" },
   { href: "/what-we-do", label: "What we do" },
-  { href: "/events/upcoming", label: "Events" },
-  { href: "/events/past", label: "Past" },
+  { kind: "events-dropdown" as const },
   { href: "/gallery", label: "Gallery" },
   { href: "/social-work", label: "Social work" },
   { href: "/community", label: "Community" },
@@ -57,15 +57,19 @@ export function SiteHeader({ config }: { config: SiteConfig }) {
         <nav className="flex max-w-[100vw] flex-1 flex-wrap items-center justify-end gap-x-0 gap-y-2 sm:gap-x-1">
           <div className="flex max-w-full flex-1 justify-end overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:overflow-visible sm:pb-0 [&::-webkit-scrollbar]:hidden">
             <div className="flex min-w-min items-center gap-0.5 pr-1 text-[13px] font-medium text-stone-600 sm:text-sm">
-              {nav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="group relative whitespace-nowrap rounded-md px-3 py-2 transition-colors hover:text-[#1e40af]"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {nav.map((item, i) =>
+                "kind" in item ? (
+                  <EventsDropdown key={`dropdown-${i}`} />
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="group relative whitespace-nowrap rounded-md px-3 py-2 transition-colors hover:text-[#1e40af]"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
             </div>
           </div>
           <a
