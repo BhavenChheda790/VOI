@@ -120,24 +120,24 @@ export default async function HomePage() {
           }}
         />
 
-        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-          <div className="grid gap-14 lg:grid-cols-[1.05fr_1.4fr] lg:items-center">
-            <Reveal>
-              <HeroOrnament className="mb-6 h-6 w-32 text-[#fbbf24]/70" />
-              <h2 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-6xl">
-                TOGETHER,
-                <br />
-                WE <span className="text-[#fbbf24]">EMPOWER</span>.
-                <br />
-                WE <span className="text-[#fbbf24]">PRESERVE</span>.
-                <br />
-                WE <span className="text-[#fbbf24]">INSPIRE</span>.
+        <div className="relative mx-auto max-w-6xl px-4 pb-12 pt-20 sm:px-6 sm:pb-16 sm:pt-28">
+          <Reveal>
+            <div className="text-center">
+              <HeroOrnament className="mx-auto mb-6 h-6 w-32 text-[#fbbf24]/70" />
+              <h2 className="mx-auto font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+                TOGETHER, WE{" "}
+                <span className="text-[#fbbf24]">EMPOWER</span>.
+                <br className="hidden sm:block" />
+                <span className="block sm:inline">
+                  {" "}WE <span className="text-[#fbbf24]">PRESERVE</span>. WE{" "}
+                  <span className="text-[#fbbf24]">INSPIRE</span>.
+                </span>
               </h2>
-              <p className="mt-7 max-w-md text-lg leading-relaxed text-stone-200">
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-stone-200">
                 Building a stronger community for a brighter future — through cultural celebration,
                 women-led leadership, and student mentorship across California.
               </p>
-              <div className="mt-9 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   href="/events/upcoming"
                   className="inline-flex items-center gap-2 rounded-md bg-[#f59e0b] px-5 py-2.5 text-sm font-semibold text-stone-900 shadow-sm transition hover:bg-[#d97706] hover:text-white"
@@ -152,17 +152,18 @@ export default async function HomePage() {
                   Support our mission
                 </Link>
               </div>
-            </Reveal>
-
-            <Reveal delay={120}>
-              <div className="relative">
-                <CornerMotif className="absolute -left-4 -top-4 hidden h-14 w-14 lg:block" />
-                <CornerMotif className="absolute -bottom-4 -right-4 hidden h-14 w-14 rotate-180 lg:block" />
-                <InfiniteImageMarquee images={communityImages} speedSeconds={40} />
-              </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
+
+        {/* Full-width marquee strip */}
+        <Reveal delay={120}>
+          <div className="relative pb-20 sm:pb-24">
+            <CornerMotif className="absolute -top-4 left-4 hidden h-14 w-14 lg:block" />
+            <CornerMotif className="absolute -bottom-4 right-4 hidden h-14 w-14 rotate-180 lg:block" />
+            <InfiniteImageMarquee images={communityImages} speedSeconds={45} />
+          </div>
+        </Reveal>
       </section>
 
       {/* ============== 5 PILLARS ============== */}
