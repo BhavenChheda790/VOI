@@ -67,7 +67,7 @@ export default async function SummerInternshipPage() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[#f59e0b] px-6 py-3 text-sm font-bold uppercase tracking-wider text-stone-900 shadow-lg transition hover:bg-[#d97706] hover:text-white"
             >
-              Register today
+              Apply today
               <IconArrowRight className="h-4 w-4" />
             </a>
             <a
@@ -180,80 +180,95 @@ export default async function SummerInternshipPage() {
 
       {/* ============== HOW TO APPLY ============== */}
       <section className="bg-stone-50/60">
-        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
           <Reveal>
-            <div className="grid items-start gap-10 lg:grid-cols-[1fr_1fr]">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#d97706]">
-                  How to apply
-                </p>
-                <h2 className="mt-2 font-display text-3xl font-semibold leading-tight text-stone-900 sm:text-4xl">
-                  Two-step application
-                </h2>
-                <ol className="mt-8 space-y-5">
-                  <li className="flex gap-4">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#1e3a8a] font-display text-sm font-extrabold text-[#fbbf24]">
-                      1
-                    </span>
-                    <div>
-                      <p className="font-display text-lg font-bold text-stone-900">
-                        Download the application
-                      </p>
-                      <p className="mt-1 text-sm text-stone-600">
-                        The Summer Internship Application is a fillable PDF. You can type directly
-                        into it on your computer.
-                      </p>
-                    </div>
-                  </li>
-                  <li className="flex gap-4">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#1e3a8a] font-display text-sm font-extrabold text-[#fbbf24]">
-                      2
-                    </span>
-                    <div>
-                      <p className="font-display text-lg font-bold text-stone-900">
-                        Email it back with your CV
-                      </p>
-                      <p className="mt-1 text-sm text-stone-600">
-                        Attach the completed PDF (plus your résumé, cover letter, or portfolio) and
-                        email it to{" "}
-                        <a
-                          href={`mailto:${config.contactEmail}`}
-                          className="font-semibold text-[#1e40af] hover:underline"
-                        >
-                          {config.contactEmail}
-                        </a>
-                        .
-                      </p>
-                    </div>
-                  </li>
-                </ol>
-              </div>
+            <div className="text-center">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#d97706]">
+                How to apply
+              </p>
+              <h2 className="mt-2 font-display text-3xl font-semibold leading-tight text-stone-900 sm:text-4xl">
+                Three simple steps
+              </h2>
+              <p className="mx-auto mt-3 max-w-2xl text-stone-600">
+                Follow these steps to submit your application. Takes about 15 minutes.
+              </p>
+            </div>
+          </Reveal>
 
-              <div className="rounded-2xl border-2 border-[#1e3a8a]/15 bg-gradient-to-br from-[#fff7ed] via-white to-[#fffbeb] p-8 text-center shadow-sm">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#fbbf24] via-[#d97706] to-[#b45309] text-white shadow-md">
-                  <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor" aria-hidden>
+          {/* Three steps */}
+          <div className="mt-12 grid gap-5 sm:grid-cols-3">
+            <Reveal>
+              <ApplyStep
+                step={1}
+                title="Open & fill the PDF"
+                body="Download the Summer Internship Application — it's a fillable PDF. Type your personal info, education, experience, and short answers directly into the form on your computer."
+                accent="open"
+              />
+            </Reveal>
+            <Reveal delay={100}>
+              <ApplyStep
+                step={2}
+                title="Attach your résumé"
+                body="Save the completed PDF. Then attach it to a new email along with your résumé (and a cover letter or portfolio if you have one)."
+                accent="attach"
+              />
+            </Reveal>
+            <Reveal delay={200}>
+              <ApplyStep
+                step={3}
+                title="Email it to us"
+                body={
+                  <>
+                    Send everything to{" "}
+                    <a
+                      href={`mailto:${config.contactEmail}`}
+                      className="font-semibold text-[#1e40af] hover:underline"
+                    >
+                      {config.contactEmail}
+                    </a>{" "}
+                    with the subject &quot;Summer Internship Application&quot;. We&apos;ll reply
+                    within 3 business days.
+                  </>
+                }
+                accent="send"
+              />
+            </Reveal>
+          </div>
+
+          {/* PDF download card */}
+          <Reveal>
+            <div className="mt-12 rounded-2xl border-2 border-[#1e3a8a]/15 bg-gradient-to-br from-[#fff7ed] via-white to-[#fffbeb] p-8 shadow-sm sm:p-10">
+              <div className="grid gap-6 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-8">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#fbbf24] via-[#d97706] to-[#b45309] text-white shadow-md">
+                  <svg viewBox="0 0 24 24" className="h-9 w-9" fill="currentColor" aria-hidden>
                     <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z" />
                   </svg>
                 </div>
-                <h3 className="mt-4 font-display text-xl font-bold text-stone-900">
-                  Summer Internship Application
-                </h3>
-                <p className="mt-2 text-sm text-stone-600">Fillable PDF · 3 pages · ~50 KB</p>
-                <a
-                  href={APPLICATION_PDF}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#f59e0b] px-6 py-3 text-sm font-bold uppercase tracking-wider text-stone-900 shadow transition hover:bg-[#d97706] hover:text-white"
-                >
-                  Download PDF
-                  <IconArrowRight className="h-4 w-4" />
-                </a>
-                <a
-                  href={applyMailto}
-                  className="mt-3 block text-xs font-semibold text-[#1e40af] hover:underline"
-                >
-                  Or open a pre-filled email →
-                </a>
+                <div className="text-center sm:text-left">
+                  <h3 className="font-display text-xl font-bold text-stone-900">
+                    Summer Internship Application
+                  </h3>
+                  <p className="mt-1 text-sm text-stone-600">
+                    Fillable PDF · 3 pages · ~50 KB · Step 1 of your application
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-2 sm:items-end">
+                  <a
+                    href={APPLICATION_PDF}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#f59e0b] px-6 py-3 text-sm font-bold uppercase tracking-wider text-stone-900 shadow transition hover:bg-[#d97706] hover:text-white"
+                  >
+                    Download PDF
+                    <IconArrowRight className="h-4 w-4" />
+                  </a>
+                  <a
+                    href={applyMailto}
+                    className="text-xs font-semibold text-[#1e40af] hover:underline"
+                  >
+                    Or open a pre-filled email →
+                  </a>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -277,7 +292,7 @@ export default async function SummerInternshipPage() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[#f59e0b] px-6 py-3 text-sm font-bold uppercase tracking-wider text-stone-900 shadow-lg transition hover:bg-[#d97706] hover:text-white"
             >
-              Register today
+              Apply today
               <IconArrowRight className="h-4 w-4" />
             </a>
             <Link
@@ -293,5 +308,61 @@ export default async function SummerInternshipPage() {
         </div>
       </section>
     </>
+  );
+}
+
+function ApplyStep({
+  step,
+  title,
+  body,
+  accent,
+}: {
+  step: number;
+  title: string;
+  body: React.ReactNode;
+  accent: "open" | "attach" | "send";
+}) {
+  return (
+    <div className="relative h-full rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#d97706]/40 hover:shadow-md">
+      <div className="flex items-center gap-3">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1e3a8a] font-display text-base font-extrabold text-[#fbbf24]">
+          {step}
+        </span>
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#fff7ed] to-[#fef3c7] text-[#d97706] shadow-inner">
+          <StepIcon accent={accent} />
+        </span>
+      </div>
+      <h3 className="mt-4 font-display text-lg font-bold text-stone-900">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-stone-600">{body}</p>
+    </div>
+  );
+}
+
+function StepIcon({ accent }: { accent: "open" | "attach" | "send" }) {
+  if (accent === "open") {
+    // Document with pen
+    return (
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+        <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-3 6h6v1H7v-1zm0 3h6v1H7v-1z" />
+      </svg>
+    );
+  }
+  if (accent === "attach") {
+    // Paperclip
+    return (
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+        <path
+          d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+  // send/paper airplane
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+      <path d="M2.01 21l20.99-9L2.01 3 2 10l15 2-15 2z" />
+    </svg>
   );
 }
