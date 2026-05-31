@@ -3,8 +3,28 @@ import remarkGfm from "remark-gfm";
 
 type Tone = "default" | "onDark";
 
+/**
+ * Wrap any bare email address found in plain text with a markdown mailto link,
+ * BUT leave emails that are already inside a markdown link `[text](mailto:...)`
+ * untouched.
+ *
+ * Heuristic: only match an email when the chars immediately around it are not
+ * markdown link delimiters or an existing mailto URL.
+ */
+function autoLinkEmails(md: string): string {
+  // (^|[^a-zA-Z0-9._%+\-:>\]])  -> not preceded by an email char, `:` (mailto:),
+  //                                `>` (autolink), or `]` (link text close)
+  // (email)
+  // (?![a-zA-Z0-9._%+-]|@|\])   -> not followed by another email char or `]`
+  //                                (which would indicate it's link text)
+  const re =
+    /(^|[^a-zA-Z0-9._%+\-:>\]])([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?![a-zA-Z0-9._%+-]|@|\])/g;
+  return md.replace(re, (_m, pre, addr) => `${pre}[${addr}](mailto:${addr})`);
+}
+
 export function MarkdownBody({ content, tone = "default" }: { content: string; tone?: Tone }) {
   const isDark = tone === "onDark";
+  const processed = autoLinkEmails(content);
 
   return (
     <div
@@ -36,21 +56,25 @@ export function MarkdownBody({ content, tone = "default" }: { content: string; t
             />
           ),
           ol: (p) => <ol className="list-decimal pl-6 space-y-2" {...p} />,
-          a: ({ href, children, ...rest }) => (
-            <a
-              href={href}
-              className={
-                isDark
-                  ? "font-semibold text-amber-200 underline decoration-amber-400/50 underline-offset-2 hover:text-white"
-                  : "font-medium text-[color:var(--voi-maroon)] underline decoration-[color:var(--voi-gold)]/50 underline-offset-2 hover:decoration-[color:var(--voi-gold)]"
-              }
-              target={href?.startsWith("http") ? "_blank" : undefined}
-              rel={href?.startsWith("http") ? "noreferrer" : undefined}
-              {...rest}
-            >
-              {children}
-            </a>
-          ),
+          a: ({ href, children, ...rest }) => {
+            const isExternal = href?.startsWith("http");
+            const isMail = href?.startsWith("mailto:");
+            return (
+              <a
+                href={href}
+                className={
+                  isDark
+                    ? "font-semibold text-amber-200 underline decoration-amber-400/50 underline-offset-2 hover:text-white"
+                    : "font-medium text-[color:var(--voi-maroon)] underline decoration-[color:var(--voi-gold)]/50 underline-offset-2 hover:decoration-[color:var(--voi-gold)]"
+                }
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal || isMail ? "noreferrer" : undefined}
+                {...rest}
+              >
+                {children}
+              </a>
+            );
+          },
           strong: (p) => (
             <strong
               className={`font-semibold ${isDark ? "text-[#fef3c7]" : "text-[color:var(--voi-maroon-deep)]"}`}
@@ -59,7 +83,7 @@ export function MarkdownBody({ content, tone = "default" }: { content: string; t
           ),
         }}
       >
-        {content}
+        {processed}
       </ReactMarkdown>
     </div>
   );
