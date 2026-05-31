@@ -34,24 +34,13 @@ export function RotatingWord({ words, intervalMs = 2200, className = "" }: Props
     return () => clearInterval(id);
   }, [reduced, words.length, intervalMs]);
 
-  // Compute the widest word so the surrounding layout doesn't shift while words
-  // rotate. We render an invisible sizer with the longest word.
-  const widest = words.reduce((a, b) => (a.length >= b.length ? a : b), "");
-
   return (
-    <span className={`relative inline-block align-baseline ${className}`}>
-      {/* invisible width sizer */}
-      <span className="invisible whitespace-nowrap" aria-hidden>
-        {widest}
-      </span>
-      {/* visible rotating word */}
-      <span
-        key={i}
-        className="voi-rotating-word absolute inset-0 whitespace-nowrap"
-        aria-live="polite"
-      >
-        {words[i]}
-      </span>
+    <span
+      key={i}
+      aria-live="polite"
+      className={`voi-rotating-word inline-block whitespace-nowrap ${className}`}
+    >
+      {words[i]}
     </span>
   );
 }

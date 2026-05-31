@@ -69,7 +69,7 @@ export default async function HomePage() {
               </h1>
               <div className="voi-animate-fade-up voi-delay-2 mt-6 flex items-center justify-center gap-3 lg:justify-start">
                 <span className="h-px w-14 bg-gradient-to-r from-transparent to-[#d97706]/70" />
-                <span className="text-lg text-[#d97706]">★ ★ ★</span>
+                <span className="text-lg text-[#d97706]">★ ★ ★ ★ ★</span>
                 <span className="h-px w-14 bg-gradient-to-l from-transparent to-[#d97706]/70" />
               </div>
             </div>
