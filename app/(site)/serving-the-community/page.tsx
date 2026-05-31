@@ -92,10 +92,10 @@ export default async function ServingTheCommunityPage() {
               Small acts of kindness, real impact
             </h2>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-700">
-              We are grateful for the incredible <strong>volunteers and community members</strong> who
-              continue to come together to help families by providing essential support, food, and
-              resources. Small acts of kindness can make a meaningful difference in someone&apos;s
-              life.
+              We are grateful for the incredible <strong>volunteers and community members</strong>{" "}
+              who continue to come together to help families by providing essential support, food,
+              and resources. Small acts of kindness can make a meaningful difference in
+              someone&apos;s life.
             </p>
           </Reveal>
         </div>
