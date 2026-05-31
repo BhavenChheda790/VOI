@@ -30,7 +30,7 @@ export default async function HomePage() {
       {/* ============== TOP BANNER ============== */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#fffaf0] via-white to-white">
         <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[auto_1fr_auto]">
+          <div className="grid items-center gap-12 lg:grid-cols-[auto_1fr]">
             {/* Logo — clean, no busy effects */}
             <div className="relative mx-auto shrink-0 lg:mx-0">
               {/* Single soft warm glow (no animation, no hue shift) */}
@@ -74,27 +74,15 @@ export default async function HomePage() {
               </div>
             </div>
 
-            {/* Tagline column */}
-            <div className="voi-animate-fade-up voi-delay-3 relative border-t border-stone-200 pt-6 text-center lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0 lg:text-left">
-              <p className="font-display text-xl font-bold leading-snug text-[#1e3a8a] sm:text-2xl">
-                Empowering Community.
-              </p>
-              <p className="mt-1 font-display text-xl font-bold leading-snug text-[#1e3a8a] sm:text-2xl">
-                Preserving Culture.
-              </p>
-              <p className="mt-1 font-display text-xl font-bold leading-snug text-[#d97706] sm:text-2xl">
-                Inspiring Unity.
-              </p>
-            </div>
           </div>
 
-          {/* INSPIRE • MOTIVATE • SUPPORT pills */}
-          <div className="voi-animate-fade-up voi-delay-4 mt-14 flex items-center justify-center gap-5 sm:gap-10">
-            <Pill text="INSPIRE" />
+          {/* Tagline phrases with diamond separators */}
+          <div className="voi-animate-fade-up voi-delay-3 mt-14 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-8">
+            <Pill text="Empowering Community" />
             <Diamond />
-            <Pill text="MOTIVATE" />
+            <Pill text="Preserving Culture" />
             <Diamond />
-            <Pill text="SUPPORT" />
+            <Pill text="Inspiring Unity" />
           </div>
         </div>
 
