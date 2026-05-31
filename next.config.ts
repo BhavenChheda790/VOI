@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
       // Homepage temporarily serves as About — redirect /about to home for the event.
       // To revert: remove this entry and re-add the About link in components/SiteHeader.tsx.
       { source: "/about", destination: "/", permanent: false },
+      // /social-work + /community merged into /serving-the-community
+      { source: "/social-work", destination: "/serving-the-community", permanent: false },
+      { source: "/community", destination: "/serving-the-community", permanent: false },
     ];
   },
 };

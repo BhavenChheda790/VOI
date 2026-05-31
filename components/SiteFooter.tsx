@@ -10,8 +10,7 @@ const exploreLinks = [
   { href: "/events/upcoming", label: "Upcoming events" },
   { href: "/events/past", label: "Past events" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/social-work", label: "Social work" },
-  { href: "/community", label: "Community" },
+  { href: "/serving-the-community", label: "Serving the Community" },
   { href: "/donate", label: "Donate" },
   { href: "/contact", label: "Contact" },
 ];
