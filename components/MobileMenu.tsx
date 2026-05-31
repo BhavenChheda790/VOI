@@ -66,9 +66,14 @@ export function MobileMenu({ links, whatsappHref }: Props) {
       <aside
         id="mobile-nav-panel"
         aria-hidden={!open}
-        className={`fixed inset-y-0 right-0 z-[70] flex w-[85vw] max-w-sm flex-col bg-white shadow-2xl transition-transform duration-300 ease-out ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
+        style={{
+          transform: open ? "translateX(0)" : "translateX(100%)",
+          visibility: open ? "visible" : "hidden",
+          transitionProperty: "transform, visibility",
+          transitionDuration: "300ms",
+          transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+        }}
+        className="fixed inset-y-0 right-0 z-[70] flex w-[85vw] max-w-sm flex-col bg-white shadow-2xl"
       >
         <div className="flex items-center justify-between border-b border-stone-200 px-5 py-4">
           <p className="font-display text-base font-semibold text-stone-900">Menu</p>
