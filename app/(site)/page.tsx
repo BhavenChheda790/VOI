@@ -61,7 +61,7 @@ export default async function HomePage() {
                 <LotusDot className="h-3.5 w-3.5" />
                 California 501(c)(3) — diaspora community
               </p>
-              <h1 className="voi-animate-fade-up voi-delay-1 mt-5 whitespace-nowrap font-display text-3xl font-extrabold leading-[0.92] tracking-tight text-[#1e3a8a] sm:text-4xl md:text-5xl lg:text-6xl">
+              <h1 className="voi-animate-fade-up voi-delay-1 mt-5 font-display text-3xl font-extrabold leading-[0.95] tracking-tight text-[#1e3a8a] sm:whitespace-nowrap sm:text-4xl md:text-5xl lg:text-6xl">
                 VOICE OF INDIA{" "}
                 <span className="bg-gradient-to-br from-[#f59e0b] via-[#d97706] to-[#b45309] bg-clip-text text-transparent">
                   USA

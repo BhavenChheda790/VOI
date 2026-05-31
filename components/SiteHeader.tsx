@@ -4,17 +4,30 @@ import type { SiteConfig } from "@prisma/client";
 import { BrandMark } from "@/components/BrandLogo";
 import { EventsDropdown } from "@/components/EventsDropdown";
 import { IconWhatsApp } from "@/components/Icons";
+import { MobileMenu } from "@/components/MobileMenu";
 import { whatsappHref } from "@/lib/site";
 
-// "About" removed — homepage already serves as About-style landing for the event.
-// "Events" + "Past" are merged into the EventsDropdown ("Our Events" with submenu).
-const nav = [
+// Desktop nav (used at lg+ screens). On mobile the hamburger menu takes over.
+const desktopNav = [
   { href: "/what-we-do", label: "What we do" },
   { kind: "events-dropdown" as const },
   { href: "/gallery", label: "Gallery" },
   { href: "/serving-the-community", label: "Serving the Community" },
   { href: "/donate", label: "Donate" },
   { href: "/career", label: "Career" },
+  { href: "/contact", label: "Contact" },
+];
+
+// Flat list used by the mobile drawer (Events is exploded into its 2 children).
+const mobileNav = [
+  { href: "/", label: "Home" },
+  { href: "/what-we-do", label: "What we do" },
+  { href: "/events/upcoming", label: "Upcoming events" },
+  { href: "/events/past", label: "Past events" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/serving-the-community", label: "Serving the Community" },
+  { href: "/donate", label: "Donate" },
+  { href: "/career", label: "Career & Internships" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -27,9 +40,10 @@ export function SiteHeader({ config }: { config: SiteConfig }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/95 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href="/" className="group flex items-center gap-3">
-          <span className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-white p-1 ring-1 ring-stone-200 transition group-hover:ring-stone-300">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+        {/* Logo + org name */}
+        <Link href="/" className="group flex min-w-0 items-center gap-3">
+          <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white p-1 ring-1 ring-stone-200 transition group-hover:ring-stone-300 sm:h-12 sm:w-12">
             {config.logoUrl ? (
               <Image
                 src={config.logoUrl}
@@ -44,43 +58,45 @@ export function SiteHeader({ config }: { config: SiteConfig }) {
             )}
           </span>
           <div className="min-w-0 leading-tight">
-            <span className="font-display block truncate text-base font-semibold tracking-tight text-stone-900 sm:text-lg">
+            <span className="font-display block truncate text-sm font-semibold tracking-tight text-stone-900 sm:text-base lg:text-lg">
               {config.orgName}
             </span>
-            <span className="hidden text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:block">
+            <span className="hidden text-[10px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:block sm:text-[11px]">
               Inspire · Motivate · Support
             </span>
           </div>
         </Link>
 
-        <nav className="flex max-w-[100vw] flex-1 flex-wrap items-center justify-end gap-x-0 gap-y-2 sm:gap-x-1">
-          <div className="flex max-w-full flex-1 justify-end overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:overflow-visible sm:pb-0 [&::-webkit-scrollbar]:hidden">
-            <div className="flex min-w-min items-center gap-0.5 pr-1 text-[13px] font-medium text-stone-600 sm:text-sm">
-              {nav.map((item, i) =>
-                "kind" in item ? (
-                  <EventsDropdown key={`dropdown-${i}`} />
-                ) : (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="group relative whitespace-nowrap rounded-md px-3 py-2 transition-colors hover:text-[#1e40af]"
-                  >
-                    {item.label}
-                  </Link>
-                )
-              )}
-            </div>
+        {/* Desktop nav (lg+) */}
+        <nav className="hidden lg:flex lg:items-center lg:gap-1">
+          <div className="flex items-center gap-0.5 text-sm font-medium text-stone-600">
+            {desktopNav.map((item, i) =>
+              "kind" in item ? (
+                <EventsDropdown key={`dropdown-${i}`} />
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="whitespace-nowrap rounded-md px-3 py-2 transition-colors hover:text-[#1e40af]"
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </div>
           <a
             href={wa}
             target="_blank"
             rel="noreferrer"
-            className="ml-1 inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#1e40af] px-4 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:bg-[#1e3a8a]"
+            className="ml-2 inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#1e40af] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1e3a8a]"
           >
             <IconWhatsApp className="h-4 w-4" />
             WhatsApp
           </a>
         </nav>
+
+        {/* Mobile hamburger (< lg) */}
+        <MobileMenu links={mobileNav} whatsappHref={wa} />
       </div>
     </header>
   );

@@ -173,8 +173,19 @@ export default async function ServingTheCommunityPage() {
             </Link>
           </div>
           <p className="mt-8 text-xs text-stone-300">
-            <span className="font-semibold text-white">{config.contactEmail}</span> · +
-            {config.whatsappCountryCode} {config.whatsappLocalNumber}
+            <a
+              href={`mailto:${config.contactEmail}`}
+              className="font-semibold text-white underline decoration-stone-500 underline-offset-2 hover:decoration-[#fbbf24]"
+            >
+              {config.contactEmail}
+            </a>{" "}
+            ·{" "}
+            <a
+              href={`tel:+${config.whatsappCountryCode}${config.whatsappLocalNumber}`}
+              className="font-semibold text-white underline decoration-stone-500 underline-offset-2 hover:decoration-[#fbbf24]"
+            >
+              +{config.whatsappCountryCode} {config.whatsappLocalNumber}
+            </a>
           </p>
         </div>
       </section>

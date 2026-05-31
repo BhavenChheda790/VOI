@@ -98,7 +98,12 @@ export default async function DonatePage() {
                 {config.zelleEmail ? (
                   <p className="mt-4 text-center text-sm text-stone-600">
                     Or send to{" "}
-                    <span className="font-medium text-stone-900">{config.zelleEmail}</span>
+                    <a
+                      href={`mailto:${config.zelleEmail}`}
+                      className="font-medium text-stone-900 underline decoration-purple-400/50 underline-offset-2 hover:decoration-purple-600"
+                    >
+                      {config.zelleEmail}
+                    </a>
                   </p>
                 ) : null}
               </div>
