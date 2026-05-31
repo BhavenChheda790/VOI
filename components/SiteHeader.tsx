@@ -39,7 +39,7 @@ export function SiteHeader({ config }: { config: SiteConfig }) {
   );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-stone-200 bg-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
         {/* Logo + org name */}
         <Link href="/" className="group flex min-w-0 items-center gap-3">
