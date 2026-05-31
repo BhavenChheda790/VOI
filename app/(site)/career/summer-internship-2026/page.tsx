@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { GoldDivider } from "@/components/Accents";
-import { IconArrowRight } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
 import { getSiteConfig } from "@/lib/site";
 
@@ -94,9 +93,7 @@ export default async function SummerInternshipPage() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[#f59e0b] px-6 py-3 text-sm font-bold uppercase tracking-wider text-stone-900 shadow-lg transition hover:bg-[#d97706] hover:text-white"
             >
-              Apply today
-              <IconArrowRight className="h-4 w-4" />
-            </a>
+              Apply today</a>
             <a
               href={applyMailto}
               className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
@@ -303,15 +300,12 @@ export default async function SummerInternshipPage() {
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-full bg-[#f59e0b] px-6 py-3 text-sm font-bold uppercase tracking-wider text-stone-900 shadow transition hover:bg-[#d97706] hover:text-white"
                   >
-                    Download PDF
-                    <IconArrowRight className="h-4 w-4" />
-                  </a>
+                    Download PDF</a>
                   <a
                     href={applyMailto}
                     className="text-xs font-semibold text-[#1e40af] hover:underline"
                   >
-                    Or open a pre-filled email →
-                  </a>
+                    Or open a pre-filled email</a>
                 </div>
               </div>
             </div>
@@ -340,9 +334,7 @@ export default async function SummerInternshipPage() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[#f59e0b] px-6 py-3 text-sm font-bold uppercase tracking-wider text-stone-900 shadow-lg transition hover:bg-[#d97706] hover:text-white"
             >
-              Apply today
-              <IconArrowRight className="h-4 w-4" />
-            </a>
+              Apply today</a>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"

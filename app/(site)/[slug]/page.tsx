@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LotusDot } from "@/components/Accents";
-import { IconArrowRight, IconWhatsApp } from "@/components/Icons";
+import { IconWhatsApp } from "@/components/Icons";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { prisma } from "@/lib/prisma";
 import { getSiteConfig, whatsappHref } from "@/lib/site";
@@ -128,17 +128,13 @@ export default async function ContentPage({
               href="/"
               className="inline-flex items-center gap-2 rounded-md bg-[#1e40af] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1e3a8a]"
             >
-              Back home
-              <IconArrowRight className="h-4 w-4" />
-            </Link>
+              Back home</Link>
             {slug !== "donate" ? (
               <Link
                 href="/donate"
                 className="inline-flex items-center gap-2 rounded-md border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-700 transition hover:border-stone-400"
               >
-                Support our mission
-                <IconArrowRight className="h-4 w-4" />
-              </Link>
+                Support our mission</Link>
             ) : null}
           </div>
         </div>

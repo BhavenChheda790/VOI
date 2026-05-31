@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { GoldDivider, LotusDot } from "@/components/Accents";
-import { IconArrowRight } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
 import { getSiteConfig } from "@/lib/site";
 
@@ -73,9 +72,7 @@ export default async function CareerPage() {
                     href={o.href}
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-[#3b82f6] to-[#1e40af] px-8 py-3 text-sm font-bold uppercase tracking-wider text-white shadow-md transition hover:from-[#1e40af] hover:to-[#1e3a8a] sm:min-w-[180px]"
                   >
-                    View
-                    <IconArrowRight className="h-4 w-4" />
-                  </Link>
+                    View</Link>
                 </div>
               </Reveal>
             ))}
@@ -99,9 +96,7 @@ export default async function CareerPage() {
               href="/"
               className="inline-flex items-center gap-2 rounded-md bg-[#1e40af] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1e3a8a]"
             >
-              Back home
-              <IconArrowRight className="h-4 w-4" />
-            </Link>
+              Back home</Link>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 rounded-md border border-stone-300 px-5 py-2.5 text-sm font-semibold text-stone-700 transition hover:border-stone-400"

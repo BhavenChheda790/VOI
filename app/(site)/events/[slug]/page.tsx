@@ -48,7 +48,7 @@ export default async function EventDetailPage({
             className="inline-flex items-center gap-2 rounded-md bg-amber-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-800"
           >
             Book ticket
-            <span aria-hidden>→</span>
+            <span aria-hidden></span>
           </a>
           <span className="text-xs text-stone-500">Opens the official ticket page in a new tab</span>
         </div>

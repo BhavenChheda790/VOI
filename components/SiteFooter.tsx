@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { SiteConfig } from "@prisma/client";
-import { IconArrowRight, IconWhatsApp } from "@/components/Icons";
+import { IconWhatsApp } from "@/components/Icons";
 import { whatsappHref } from "@/lib/site";
 
 const exploreLinks = [
@@ -68,9 +68,7 @@ export function SiteFooter({ config }: { config: SiteConfig }) {
               href={`mailto:${config.contactEmail}`}
               className="group mt-4 flex items-center gap-2 text-sm text-stone-700 transition hover:text-stone-900"
             >
-              {config.contactEmail}
-              <IconArrowRight className="h-4 w-4 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
-            </a>
+              {config.contactEmail}</a>
             <a
               href={wa}
               className="mt-3 inline-flex items-center gap-2 rounded-md bg-emerald-600 px-3 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700"

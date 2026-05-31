@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { LotusDot } from "@/components/Accents";
-import { IconArrowRight } from "@/components/Icons";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -96,9 +95,7 @@ export default async function UpcomingEventsPage() {
                         href={`/events/${e.slug}`}
                         className="inline-flex w-fit items-center gap-2 rounded-md bg-[#1e40af] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1e3a8a]"
                       >
-                        Event details
-                        <IconArrowRight className="h-4 w-4" />
-                      </Link>
+                        Event details</Link>
                       {e.ticketUrl ? (
                         <a
                           href={e.ticketUrl}
@@ -106,9 +103,7 @@ export default async function UpcomingEventsPage() {
                           rel="noopener noreferrer"
                           className="inline-flex w-fit items-center gap-2 rounded-md border border-amber-700 bg-amber-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-800"
                         >
-                          Book ticket
-                          <IconArrowRight className="h-4 w-4" />
-                        </a>
+                          Book ticket</a>
                       ) : null}
                     </div>
                   </div>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { GoldDivider, LotusDot } from "@/components/Accents";
-import { IconArrowRight, IconWhatsApp } from "@/components/Icons";
+import { IconWhatsApp } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
 import { getSiteConfig, whatsappHref } from "@/lib/site";
 
@@ -133,9 +133,7 @@ export default async function WhatWeDoPage() {
                       href={p.learnMoreHref}
                       className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[#d97706] transition hover:text-[#b45309] hover:underline"
                     >
-                      Learn more
-                      <IconArrowRight className="h-3.5 w-3.5" />
-                    </Link>
+                      Learn more</Link>
                   ) : null}
 
                   {/* Animated bottom underline */}
@@ -157,9 +155,7 @@ export default async function WhatWeDoPage() {
                 href="/events/upcoming"
                 className="inline-flex items-center gap-2 rounded-md bg-[#1e40af] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1e3a8a]"
               >
-                See upcoming events
-                <IconArrowRight className="h-4 w-4" />
-              </Link>
+                See upcoming events</Link>
               <Link
                 href="/career"
                 className="inline-flex items-center gap-2 rounded-md border border-stone-300 px-5 py-2.5 text-sm font-semibold text-stone-700 transition hover:border-stone-400"

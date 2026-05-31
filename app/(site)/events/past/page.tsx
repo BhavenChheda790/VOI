@@ -85,7 +85,7 @@ export default async function PastEventsPage() {
                       className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#1e40af] transition hover:text-[#1e3a8a]"
                     >
                       Read more
-                      <span aria-hidden>→</span>
+                      <span aria-hidden></span>
                     </Link>
                   </div>
                 </li>

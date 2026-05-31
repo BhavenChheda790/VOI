@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CornerMotif, GoldDivider, LotusDot } from "@/components/Accents";
 import { BrandLogo } from "@/components/BrandLogo";
 import { HeroOrnament, MeshBlob, SectionDivider } from "@/components/BrandMotif";
-import { IconArrowRight, IconLotus } from "@/components/Icons";
+import { IconLotus } from "@/components/Icons";
 import { InfiniteImageMarquee } from "@/components/InfiniteImageMarquee";
 import { Reveal } from "@/components/Reveal";
 import { RotatingWord } from "@/components/RotatingWord";
@@ -142,9 +142,7 @@ export default async function HomePage() {
                   href="/events/upcoming"
                   className="inline-flex items-center gap-2 rounded-md bg-[#f59e0b] px-5 py-2.5 text-sm font-semibold text-stone-900 shadow-sm transition hover:bg-[#d97706] hover:text-white"
                 >
-                  See upcoming events
-                  <IconArrowRight className="h-4 w-4" />
-                </Link>
+                  See upcoming events</Link>
                 <Link
                   href="/donate"
                   className="inline-flex items-center gap-2 rounded-md border border-white/30 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
@@ -210,9 +208,7 @@ export default async function HomePage() {
                 href="/about"
                 className="inline-flex items-center gap-2 rounded-md bg-[#1e40af] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1e3a8a]"
               >
-                Read our story
-                <IconArrowRight className="h-4 w-4" />
-              </Link>
+                Read our story</Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-md border border-stone-300 px-5 py-2.5 text-sm font-semibold text-stone-700 transition hover:border-stone-400"

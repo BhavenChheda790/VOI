@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { IconArrowRight, IconWhatsApp } from "@/components/Icons";
+import { IconWhatsApp } from "@/components/Icons";
 
 const SESSION_KEY = "voi_event_popup_dismissed_v1";
 
@@ -205,9 +205,7 @@ export function EventPopup({
                   {zelleEmail ? <> · {zelleEmail}</> : null}
                 </p>
               </div>
-            </div>
-            <IconArrowRight className="h-5 w-5 shrink-0 text-purple-700 transition group-hover:translate-x-0.5" />
-          </Link>
+            </div></Link>
 
           {/* WhatsApp CTA */}
           <a
@@ -241,9 +239,7 @@ export function EventPopup({
                   We share Zelle, bank details, and confirm your gift.
                 </p>
               </div>
-            </div>
-            <IconArrowRight className="h-5 w-5 shrink-0 text-emerald-700 transition group-hover:translate-x-0.5" />
-          </a>
+            </div></a>
 
           <button
             type="button"
