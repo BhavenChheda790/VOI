@@ -175,9 +175,10 @@ export default async function SummerInternshipPage() {
             <Reveal delay={120}>
               <div className="rounded-2xl bg-gradient-to-br from-[#1e3a8a] to-[#172554] p-8 text-white shadow-lg">
                 <p className="text-stone-200">
-                  Voice of India USA acts as a <strong>bridge</strong> between ambitious students
-                  and reputable corporations looking for emerging talent. We don&apos;t just point
-                  students toward jobs — we mentor the next generation of leaders.
+                  Voice of India USA acts as a <strong>bridge</strong>{" "}
+                  between ambitious students and reputable corporations looking for emerging talent.
+                  We don&apos;t just point students toward jobs — we mentor the next generation of
+                  leaders.
                 </p>
                 <div className="my-7 flex items-center gap-3">
                   <span className="h-px flex-1 bg-[#fbbf24]/40" />
