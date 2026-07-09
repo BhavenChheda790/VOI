@@ -139,79 +139,86 @@ export function EventPopup({
               </>
             ) : null}
 
-            {/* Primary CTA — event ticket link */}
             {hasCta ? (
-              <a
-                href={ctaUrl}
-                target="_blank"
-                rel="noreferrer"
-                onClick={close}
-                className="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-br from-[#f59e0b] via-[#d97706] to-[#b45309] px-5 py-4 text-base font-extrabold uppercase tracking-wider text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
-              >
-                🎟️ {ctaLabel}
-              </a>
-            ) : null}
-
-            {/* Donate divider */}
-            <div className="my-5 flex items-center justify-center gap-3">
-              <span className="h-px w-14 bg-gradient-to-r from-transparent to-[#d97706]/60" />
-              <span className="text-[10px] font-extrabold uppercase tracking-[0.32em] text-[#d97706]">
-                {hasCta ? "Or Support Us" : "Donate Here"}
-              </span>
-              <span className="h-px w-14 bg-gradient-to-l from-transparent to-[#d97706]/60" />
-            </div>
-
-            {/* Zelle CTA */}
-            <Link
-              href="/donate"
-              onClick={close}
-              className="group relative flex items-center justify-between gap-3 overflow-hidden rounded-2xl border border-purple-200 bg-gradient-to-br from-white via-purple-50/40 to-purple-100/40 p-3.5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-purple-300 hover:shadow-md"
-            >
-              <span aria-hidden className="pointer-events-none absolute inset-y-0 -left-px w-1 bg-purple-600" />
-              <div className="flex items-center gap-3">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 text-white shadow-sm">
-                  <span className="font-display text-sm font-extrabold">Z</span>
-                </span>
-                <div className="min-w-0">
-                  <p className="font-display text-xs font-bold text-stone-900">
-                    Zelle® · No fees
-                  </p>
-                  <p className="mt-0.5 truncate text-[11px] font-semibold text-stone-700">
-                    {zelleName}
-                  </p>
-                  <p className="text-[10px] text-stone-500">
-                    <span className="font-mono">{zellePhone}</span>
-                    {zelleEmail ? <> · {zelleEmail}</> : null}
-                  </p>
+              <>
+                {/* Primary CTA — event ticket link */}
+                <a
+                  href={ctaUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={close}
+                  className="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-br from-[#f59e0b] via-[#d97706] to-[#b45309] px-5 py-4 text-base font-extrabold uppercase tracking-wider text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
+                >
+                  🎟️ {ctaLabel}
+                </a>
+                <p className="mt-3 text-[11px] text-stone-500">
+                  Opens the official ticket page in a new tab.
+                </p>
+              </>
+            ) : (
+              <>
+                {/* No CTA — fall back to donate options */}
+                <div className="my-5 flex items-center justify-center gap-3">
+                  <span className="h-px w-14 bg-gradient-to-r from-transparent to-[#d97706]/60" />
+                  <span className="text-[10px] font-extrabold uppercase tracking-[0.32em] text-[#d97706]">
+                    Donate Here
+                  </span>
+                  <span className="h-px w-14 bg-gradient-to-l from-transparent to-[#d97706]/60" />
                 </div>
-              </div>
-              <span aria-hidden className="text-lg text-purple-700">→</span>
-            </Link>
 
-            {/* WhatsApp CTA */}
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              onClick={close}
-              className="group relative mt-2.5 flex items-center justify-between gap-3 overflow-hidden rounded-2xl border border-emerald-200 bg-gradient-to-br from-white via-emerald-50/40 to-emerald-100/40 p-3.5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md"
-            >
-              <span aria-hidden className="pointer-events-none absolute inset-y-0 -left-px w-1 bg-emerald-600" />
-              <div className="flex items-center gap-3">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-sm">
-                  <IconWhatsApp className="h-4 w-4" />
-                </span>
-                <div className="min-w-0">
-                  <p className="font-display text-xs font-bold text-stone-900">
-                    WhatsApp · Verified
-                  </p>
-                  <p className="mt-0.5 text-[11px] text-stone-600">
-                    Chat with our team for tickets or to donate.
-                  </p>
-                </div>
-              </div>
-              <span aria-hidden className="text-lg text-emerald-700">→</span>
-            </a>
+                {/* Zelle CTA */}
+                <Link
+                  href="/donate"
+                  onClick={close}
+                  className="group relative flex items-center justify-between gap-3 overflow-hidden rounded-2xl border border-purple-200 bg-gradient-to-br from-white via-purple-50/40 to-purple-100/40 p-3.5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-purple-300 hover:shadow-md"
+                >
+                  <span aria-hidden className="pointer-events-none absolute inset-y-0 -left-px w-1 bg-purple-600" />
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 text-white shadow-sm">
+                      <span className="font-display text-sm font-extrabold">Z</span>
+                    </span>
+                    <div className="min-w-0">
+                      <p className="font-display text-xs font-bold text-stone-900">
+                        Zelle® · No fees
+                      </p>
+                      <p className="mt-0.5 truncate text-[11px] font-semibold text-stone-700">
+                        {zelleName}
+                      </p>
+                      <p className="text-[10px] text-stone-500">
+                        <span className="font-mono">{zellePhone}</span>
+                        {zelleEmail ? <> · {zelleEmail}</> : null}
+                      </p>
+                    </div>
+                  </div>
+                  <span aria-hidden className="text-lg text-purple-700">→</span>
+                </Link>
+
+                {/* WhatsApp CTA */}
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={close}
+                  className="group relative mt-2.5 flex items-center justify-between gap-3 overflow-hidden rounded-2xl border border-emerald-200 bg-gradient-to-br from-white via-emerald-50/40 to-emerald-100/40 p-3.5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md"
+                >
+                  <span aria-hidden className="pointer-events-none absolute inset-y-0 -left-px w-1 bg-emerald-600" />
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-sm">
+                      <IconWhatsApp className="h-4 w-4" />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="font-display text-xs font-bold text-stone-900">
+                        WhatsApp · Verified
+                      </p>
+                      <p className="mt-0.5 text-[11px] text-stone-600">
+                        Chat with our team for tickets or to donate.
+                      </p>
+                    </div>
+                  </div>
+                  <span aria-hidden className="text-lg text-emerald-700">→</span>
+                </a>
+              </>
+            )}
 
             <button
               type="button"
