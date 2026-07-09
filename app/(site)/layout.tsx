@@ -38,6 +38,9 @@ export default async function SiteLayout({
           whatsappHref={popupWa}
           logoUrl={config.logoUrl}
           orgName={config.orgName}
+          imageUrl={config.popupImageUrl}
+          ctaLabel={config.popupCtaLabel}
+          ctaUrl={config.popupCtaUrl}
         />
       ) : null}
     </>

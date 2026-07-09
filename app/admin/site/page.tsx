@@ -118,6 +118,25 @@ export default async function AdminSitePage({
               defaultValue={c.popupMessage ?? ""}
               rows={4}
             />
+            <ImageUpload
+              label="Popup image (event flyer)"
+              name="popupImageUrl"
+              defaultValue={c.popupImageUrl ?? ""}
+              hint="Optional. Shows at top of the popup. If empty, popup uses the navy hero design instead."
+              previewAspect="square"
+            />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Field
+                label="Primary button label (optional)"
+                name="popupCtaLabel"
+                defaultValue={c.popupCtaLabel ?? ""}
+              />
+              <Field
+                label="Primary button URL (e.g. Eventbrite)"
+                name="popupCtaUrl"
+                defaultValue={c.popupCtaUrl ?? ""}
+              />
+            </div>
           </fieldset>
           <fieldset className="space-y-4">
             <legend className="text-sm font-semibold text-stone-900">Bot message templates (optional overrides)</legend>

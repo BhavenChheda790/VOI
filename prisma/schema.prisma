@@ -40,10 +40,14 @@ model SiteConfig {
   zellePhone          String?
   zelleQrUrl          String?
 
-  // Event thank-you popup (shown site-wide when enabled)
-  popupEnabled  Boolean @default(false)
-  popupTitle    String?
-  popupMessage  String?
+  // Event popup (shown site-wide when enabled).
+  // Doubles as event promo before, thank-you after.
+  popupEnabled   Boolean @default(false)
+  popupTitle     String?
+  popupMessage   String?
+  popupImageUrl  String?  // event flyer / hero image at top of modal
+  popupCtaLabel  String?  // primary button text (e.g. 'Book Tickets')
+  popupCtaUrl    String?  // primary button target (Eventbrite URL)
 
   // Bot message templates (override defaults if set)
   botGreeting     String?
